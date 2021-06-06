@@ -1,0 +1,30 @@
+.title1 {
+  color: black;
+  text-align: center;
+  font-size: 75px;
+  margin-bottom: 50px;
+}
+
+.title2 {
+  text-align: center;
+}
+
+.menu {
+  background-color: rgb(255, 130, 0);
+  padding: 20px;
+  width: 300px;
+  margin: 10px auto 50px auto;
+  text-align: center;
+  font-size: 25px;
+}
+
+.menu:hover {
+  background-image: linear-gradient(0, red, yellow);
+}
+
+.bigBox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, #9fbaa8, #31354c);
+}
