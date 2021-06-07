@@ -9,7 +9,7 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [mode, setMode] = useState(0);
 
-  /*return (
+  return (
     <>
       {loggedIn ? (
         <PageGuessColor />
@@ -17,7 +17,7 @@ export default function App() {
         <PageLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       )}
     </>
-  );*/
+  );
 
-  return <PageCollection />;
+  
 }
