@@ -7,6 +7,7 @@ import PageCollection from "./pages/PageCollection/PageCollection";
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [profile, setProfile] = useState("");
   const [mode, setMode] = useState(0);
 
   return (
