@@ -1,7 +1,29 @@
 import { useState } from "react";
-import styles from "./PageGuessColor.module.css";
+/*import styles from "./PageGuessColor.module.css";*/
+import AppShell from "./components/AppShell";
+import TargetColor from "./components/TargetColor";
+import Play from "./components/Play";
 
-function PageGuessColor() {
+function PageGuessColor(props) {
+  const [Color, setColor] = useState("");
+  const [show, setShow] = useState("showTarget");
+  const { setGuess } = props;
+  return (
+    <div className={styles.bigBox}>
+      <AppShell setGuess={setGuess} />
+      {show === "showTarget" ? (
+        <TargetColor setShow={setShow} setColor={setColor} />
+      ) : (
+        <Play Color={Color} />
+      )}
+    </div>
+  );
+}
+
+export default PageGuessColor;
+
+
+/*function PageGuessColor() {
   const [successful, setSuccessful] = useState(false);
 
   function showSuccessful() {
@@ -47,4 +69,4 @@ function PageGuessColor() {
   );
 }
 
-export default PageGuessColor;
+export default PageGuessColor;*/
