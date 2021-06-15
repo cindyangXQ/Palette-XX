@@ -1,24 +1,35 @@
 import { useState } from "react";
 import PageLogin from "./pages/PageLogin";
 import PageProfile from "./pages/PageProfile";
-import PageGuessColor from "./pages/PageGuessColor";
 import PageDifficulty from "./pages/PageDifficulty/PageDifficulty";
 import PageCollection from "./pages/PageCollection/PageCollection";
+import {
+  FirebaseAuthConsumer,
+  IfFirebaseAuthed,
+  IfFirebaseUnAuthed
+} from "@react-firebase/auth";
+import PageLogin from "./pages/PageLogin";
+import PageGuessColor from "./pages/PageGuessColor";
+import PageMode from "./pages/PageMode";
 
-export default function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [profile, setProfile] = useState("");
-  const [mode, setMode] = useState(0);
-
+function App() {
+  const [Guess, setGuess] = useState("False");
   return (
-    <>
-      {loggedIn ? (
-        <PageGuessColor />
-      ) : (
-        <PageLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      )}
-    </>
+    <div className="App">
+      <FirebaseAuthConsumer>
+        <IfFirebaseAuthed>
+          {Guess === "False" ? (
+            <PageMode setGuess={setGuess} />
+          ) : (
+            <PageGuessColor setGuess={setGuess} />
+          )}
+        </IfFirebaseAuthed>
+        <IfFirebaseUnAuthed>
+          <PageLogin setGuess={setGuess} />
+        </IfFirebaseUnAuthed>
+      </FirebaseAuthConsumer>
+    </div>
   );
-
-  
 }
+
+export default App;
