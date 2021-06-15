@@ -17,6 +17,10 @@
   background-image: linear-gradient(45deg, #9fbaa8, #31354c);
 }
 
+.flex {
+  display: flex;
+}
+
 .targetColor {
   background-color: rgb(70%, 90%, 60%);
   height: 80px;
@@ -28,6 +32,13 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  margin: 10px;
+}
+
+.effectColor {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
   margin: 10px;
 }
 
