@@ -17,7 +17,7 @@ function PageLogin() {
       <div className={styles.bigBox}>
         <div className={styles.Box}>
           <h1>
-            Welcome to <span className={styles.pallet}>Pallete </span>
+            Welcome to <span className={styles.palette}>Palette </span>
           </h1>
           <FirebaseAuthConsumer>
             {({ firebase }) => (
