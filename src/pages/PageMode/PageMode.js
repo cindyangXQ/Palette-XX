@@ -13,7 +13,7 @@ function PageMode(props) {
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
       </style>
-      <AppShell />
+      <AppShell setGuess={setGuess}/>
       <ButtonBase
         variant="contained"
         className={styles.Guess}
