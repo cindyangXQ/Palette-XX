@@ -4,7 +4,7 @@ import styles from "./AppShell.module.css";
 import logo from "./logo.png";
 
 function AppShell(props) {
-  const { setGuess } = props;
+  const { setMode } = props;
   const handleLogout = (firebase) => {
     firebase.auth().signOut();
   };
@@ -22,12 +22,12 @@ function AppShell(props) {
             className={styles.Title}
             style={{ flexGrow: 1, textAlign: "left" }}
           >
-            Pallete
+            Palette
           </p>
           <Button
             color="inherit"
             onClick={() => {
-              setGuess("False");
+              setMode("Mode");
             }}
           >
             Home

@@ -1,2 +1,2 @@
-import PageDifficulty from "./Pagedifficulty";
+import PageDifficulty from "./PageDifficulty";
 export default PageDifficulty;

@@ -1,12 +1,12 @@
-import AppShell from "../PageGuessColor/components/AppShell";
+import AppShell from "../../components/AppShell";
 import styles from "./PageMode.module.css";
 import { ButtonBase } from "@material-ui/core";
-import guess from "./guess.mp4";
-import mix from "./mix.mp4";
-import profile from "./profile.png";
+import guessMusic from "./guess.mp4";
+import mixMusic from "./mix.mp4";
+import profilePic from "./profile.png";
 
 function PageMode(props) {
-  const { setGuess } = props;
+  const { setMode } = props;
   return (
     <div className={styles.container}>
       <style>
@@ -18,28 +18,46 @@ function PageMode(props) {
         variant="contained"
         className={styles.Guess}
         onClick={() => {
-          setGuess("True");
+          setMode("Difficulty");
         }}
       >
         <video autoPlay="autoplay" loop="loop" muted className={styles.Video}>
-          <source src={guess} type="video/mp4" />
+          <source src={guessMusic} type="video/mp4" />
         </video>
         <strong className={styles.guessTitle}>GUESS</strong>
       </ButtonBase>
 
-      <ButtonBase variant="contained" className={styles.Mix}>
+      <ButtonBase 
+        variant="contained" 
+        className={styles.Mix}
+        onClick={() => {
+          setMode("Mix");
+        }}
+      >
         <video autoPlay="autoplay" loop="loop" muted className={styles.Video}>
-          <source src={mix} type="video/mp4" />
+          <source src={mixMusic} type="video/mp4" />
         </video>
         <strong className={styles.mixTitle}>MIX</strong>
       </ButtonBase>
 
-      <ButtonBase variant="contained" className={styles.Profile}>
-        <img className={styles.Img} src={profile} alt="" />
+      <ButtonBase 
+        variant="contained" 
+        className={styles.Profile}
+        onClick={() => {
+          setMode("Profile");
+        }}
+      >
+        <img className={styles.Img} src={profilePic} alt="" />
         <strong className={styles.profileTitle}>PROFILE</strong>
       </ButtonBase>
 
-      <ButtonBase variant="contained" className={styles.Collection}>
+      <ButtonBase 
+        variant="contained" 
+        className={styles.Collection}
+        onClick={() => {
+          setMode("Collection");
+        }}
+      >
         <strong className={styles.collectionTitle}>COLLECTION</strong>
       </ButtonBase>
     </div>

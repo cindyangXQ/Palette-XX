@@ -5,14 +5,31 @@
   background-color: #d1dbbd;
 }
 
-.Guess {
+strong {
+  margin-top: 50%;
+  z-index: 3;
+  color: snow;
+  font-family: "Quicksand", sans-serif;
+}
 
+.Guess {
   padding: 0px 0px 0px 0px;
   width: 25%;
   height: 65%;
   margin-top: 6%;
   margin-left: 16%;
   background-color: #313540;
+  border-radius: 5px;
+}
+
+.Mix {
+  padding: 0px 0px 0px 0px;
+  position: relative;
+  background-color: #313540;
+  width: 25%;
+  height: 40%;
+  margin-left: 2%;
+  margin-top: -6%;
   border-radius: 5px;
 }
 
@@ -27,27 +44,13 @@
   border-radius: 5px;
 }
 
-.Video {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-}
-
-strong {
-  margin-top: 50%;
-  z-index: 3;
-  color: snow;
-  font-family: "Quicksand", sans-serif;
-}
-
-.Mix {
-  padding: 0px 0px 0px 0px;
+.Collection {
   position: relative;
+  width: 42%;
+  height: 21%;
+  margin-left: 43%;
+  margin-top: -12%;
   background-color: #313540;
-  width: 25%;
-  height: 40%;
-  margin-left: 2%;
-  margin-top: -6%;
   border-radius: 5px;
 }
 
@@ -60,29 +63,25 @@ strong {
   font-size: 40px;
 }
 
-.Img {
-  position: absolute;
-  width: 80%;
-  height: 60%;
-  z-index: 2;
-}
-
 .profileTitle {
   margin-top: 66%;
   font-size: 35px;
 }
 
-.Collection {
-  position: relative;
-  width: 42%;
-  height: 21%;
-  margin-left: 43%;
-  margin-top: -12%;
-  background-color: #313540;
-  border-radius: 5px;
-}
-
 .collectionTitle {
   margin-top: 1%;
   font-size: 35px;
+}
+
+.Video {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+}
+
+.Img {
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  z-index: 2;
 }

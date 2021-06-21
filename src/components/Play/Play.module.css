@@ -1,0 +1,64 @@
+.title1 {
+    text-align: center;
+    margin-top: -10px;
+    padding: 15px;
+    font-size: 60px;
+  }
+  
+  .title2 {
+    text-align: center;
+    margin-bottom: -50px;
+  }
+  
+  .bigBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, #9fbaa8, #31354c);
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .targetColor {
+    background-color: rgb(70%, 90%, 60%);
+    height: 80px;
+    width: 500px;
+    margin: auto;
+  }
+  
+  .chooseColor {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+  }
+  
+  .effectColor {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+  }
+  
+  .enterPercentage {
+    height: 30px;
+    margin: 10px;
+  }
+  
+  .submitButton {
+    height: 30px;
+    margin: 10px;
+  }
+  
+  #color1 {
+    background-color: red;
+  }
+  #color2 {
+    background-color: green;
+  }
+  #color3 {
+    background-color: blue;
+  }
+  

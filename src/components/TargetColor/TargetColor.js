@@ -22,9 +22,7 @@ function TargetColor(props) {
           setCheck(false);
           document.getElementById("target").innerHTML =
             "Click To Change Target Color";
-          document.getElementById(
-            "target"
-          ).style.backgroundColor = randomColor();
+          document.getElementById("target").style.backgroundColor = randomColor();
         }}
       >
         <h2 className={styles.inbox} id="target">
