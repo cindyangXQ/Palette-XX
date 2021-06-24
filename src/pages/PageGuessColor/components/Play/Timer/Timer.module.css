@@ -1,25 +1,23 @@
-.wraper{
-  margin-top:-40%;
-  margin-left:45%;
-  
+.wraper {
+  margin-top: -500px;
+  margin-left: 45%;
 }
 
-.text{
-  font-size:20px;
+.text {
+  font-size: 20px;
   font-family: "Quicksand", sans-serif;
-  font-weight:bolder;
-  color:#412619;
+  font-weight: bolder;
+  color: #412619;
 }
 
-.color{
- height:30px;
- width:30px;
- margin-left:2%;
- margin-right:10%;
- border-radius:15px;
- border-style:solid;
- border-width:1.5px;
- float:left;
- border-color:#412619;
-
+.color {
+  height: 30px;
+  width: 30px;
+  margin-left: 2%;
+  margin-right: 10%;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 1.5px;
+  float: left;
+  border-color: #412619;
 }

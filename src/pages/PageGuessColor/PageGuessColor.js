@@ -5,7 +5,7 @@ import TargetColor from "./components/TargetColor";
 import Play from "./components/Play";
 
 function PageGuessColor(props) {
-  const [Color, setColor] = useState("");
+  const [Color, setColor] = useState({"red":0, "green":0, "blue":0});
   const [show, setShow] = useState("showTarget");
   const { setGuess } = props;
   return (

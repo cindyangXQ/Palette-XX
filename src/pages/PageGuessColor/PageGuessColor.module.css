@@ -1,11 +1,5 @@
-.title1 {
-  text-align: center;
-  margin-top: -10px;
-  padding: 15px;
-  font-size: 60px;
-}
-
-.title2 {
+h3 {
+  margin-top: 50px;
   text-align: center;
   margin-bottom: -50px;
 }
@@ -14,11 +8,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(45deg, #9fbaa8, #31354c);
-}
-
-.flex {
-  display: flex;
+  /*background-image: linear-gradient(45deg, #9fbaa8, #31354c);*/
+  background-color: #d1dbbd;
 }
 
 .targetColor {
@@ -32,13 +23,6 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  margin: 10px;
-}
-
-.effectColor {
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
   margin: 10px;
 }
 

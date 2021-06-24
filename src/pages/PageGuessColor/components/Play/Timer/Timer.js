@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./Timer.module.css";
 
 const Timer = (props) => {
-  const {Color} = props;
+  const { Color } = props;
   const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-
-  function toggle() {
-    setIsActive(!isActive);
-  }
+  const [isActive, setIsActive] = useState(true);
 
   function reset() {
     setSeconds(0);
@@ -30,21 +26,16 @@ const Timer = (props) => {
   return (
     <div className="app">
       <div className={styles.wraper}>
-      <span className={styles.text} style={{float:"left"}}>Target Color: </span>
-      <div className={styles.color}
-           style={{backgroundColor:Color}} />
-      <span className={styles.text}>Timer: &nbsp; {Math.floor(seconds/60)}min {seconds%60}s</span>
+        <span className={styles.text} style={{ float: "left" }}>
+          Target Color:{" "}
+        </span>
+        <div className={styles.color} style={{ backgroundColor: "rgb(" + Color.red + ", " + Color.green + ", " + Color.blue + ")" }} />
+        <span className={styles.text}>
+          Timer: &nbsp; {Math.floor(seconds / 60)}min {seconds % 60}s
+        </span>
       </div>
-      
+
       <div className="row">
-        <button
-          className={`button button-primary button-primary-${
-            isActive ? "active" : "inactive"
-          }`}
-          onClick={toggle}
-        >
-          {isActive ? "Pause" : "Start"}
-        </button>
         <button className="button" onClick={reset}>
           Reset
         </button>

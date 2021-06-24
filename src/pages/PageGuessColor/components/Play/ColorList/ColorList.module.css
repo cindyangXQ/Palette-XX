@@ -1,0 +1,11 @@
+.red {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-left: 40%;
+  margin-top: 3%;
+  border-style:solid;
+  border-color:#313540;
+  border-width:1.5px;
+}
+

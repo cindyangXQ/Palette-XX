@@ -10,7 +10,7 @@ function TargetColor(props) {
     var red = Math.floor(Math.random() * 256);
     var green = Math.floor(Math.random() * 256);
     var blue = Math.floor(Math.random() * 256);
-    setColor("rgb(" + red + ", " + green + ", " + blue + ")");
+    setColor({"red":red, "green":green, "blue":blue});
     return "rgb(" + red + ", " + green + ", " + blue + ")";
   }
 
