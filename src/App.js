@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AppShell from "./components/AppShell";
 import PageLogin from "./pages/PageLogin";
 import PageMode from "./pages/PageMode";
 import PageDifficulty from "./pages/PageDifficulty";
@@ -15,22 +16,31 @@ import {
 function App() {
   const [ mode, setMode ] = useState("Mode");
   const [ level, setLevel ] = useState("False");
+  const [ point, setPoint ] = useState(500);
+  const [ toolsUsed, setToolsUsed] = useState(0);
   return (
     <div className="App">
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
+          <AppShell setMode={setMode} />
           {mode === "Mode" ? (
             <PageMode setMode={setMode} />
           ) : mode === "Difficulty" ? (
             <PageDifficulty setMode={setMode} setLevel={setLevel} />  
           ) : mode === "Guess" ? (
-            <PageGuessColor mode={mode} setMode={setMode} level={level} />
+            <PageGuessColor 
+              level={level} 
+              point={point} 
+              setPoint={setPoint}
+              toolsUsed={toolsUsed} 
+              setToolsUsed={setToolsUsed}
+            />
           ) : mode === "Mix" ? (
-            <PageMix setMode={setMode} />
+            <PageMix />
           ) : mode === "Profile" ? (
-            <PageProfile setMode={setMode} />
+            <PageProfile point={point}/>
           ) : (   // mode === "Collection" ?
-            <PageCollection setMode={setMode} />
+            <PageCollection />
           )}
         </IfFirebaseAuthed>
         <IfFirebaseUnAuthed>

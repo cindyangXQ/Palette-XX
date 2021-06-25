@@ -1,4 +1,3 @@
-import AppShell from "../../components/AppShell";
 import styles from "./PageMode.module.css";
 import { ButtonBase } from "@material-ui/core";
 import guessMusic from "./guess.mp4";
@@ -13,7 +12,6 @@ function PageMode(props) {
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
       </style>
-      <AppShell />
       <ButtonBase
         variant="contained"
         className={styles.Guess}

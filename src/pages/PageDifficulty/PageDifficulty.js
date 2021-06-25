@@ -1,12 +1,10 @@
 import styles from "./PageDifficulty.module.css";
-import AppShell from "../../components/AppShell";
 import { ButtonBase } from "@material-ui/core";
 
 function PageDifficulty(props) {
-  const { setMode, setLevel} = props;
+  const { setMode, setLevel } = props;
   return (
     <div className={styles.bigBox}>
-      <AppShell setMode={setMode} />
       <h1 className={styles.title1}>Guess!</h1>
       <h3 className={styles.title2}>Select level of difficulty:</h3>
 
@@ -14,7 +12,7 @@ function PageDifficulty(props) {
       <ButtonBase
         variant="contained"
         onClick={() => {
-          //setLevel("Easy");
+          setLevel("Easy");
           setMode("Guess");
         }}
       >
