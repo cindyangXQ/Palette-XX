@@ -2,35 +2,36 @@ import { useState } from "react";
 import styles from "./TargetColor.module.css";
 import { ButtonBase, Button } from "@material-ui/core";
 
+function cusColor(red, green, blue) {
+  var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
+  return {
+    rgb: rgbstring, 
+    r: red, 
+    g: green,
+    b: blue, 
+    cssString: { backgroundColor: rgbstring }
+  };
+}
+
+function randomColor() {
+  var red = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var blue = Math.floor(Math.random() * 256);
+  return cusColor(red, green, blue);
+}
+
+function generateMix(c0, c1, c2, p0, p1, p2) {
+  var red = Math.floor(p0 * c0.r + p1 * c1.r + p2 * c2.r);
+  var green = Math.floor(p0 * c0.g + p1 * c1.g + p2 * c2.g);
+  var blue = Math.floor(p0 * c0.b + p1 * c1.b + p2 * c2.b);
+  return cusColor(red, green, blue);
+}
+
 function TargetColor(props) {
   const [check, setCheck] = useState(true);
   const { setShow, setTargetColor, 
           setChoice0, setChoice1, setChoice2, 
           setPct0, setPct1, setPct2 } = props;
-
-  function cusColor(red, green, blue) {
-    var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
-    return {
-      rgb: rgbstring, 
-      r: red, 
-      g: green,
-      b: blue
-    };
-  }
-
-  function randomColor() {
-    var red = Math.floor(Math.random() * 256);
-    var green = Math.floor(Math.random() * 256);
-    var blue = Math.floor(Math.random() * 256);
-    return cusColor(red, green, blue);
-  }
-
-  function generateMix(c0, c1, c2, p0, p1, p2) {
-    var red = Math.floor(p0 * c0.r + p1 * c1.r + p2 * c2.r);
-    var green = Math.floor(p0 * c0.g + p1 * c1.g + p2 * c2.g);
-    var blue = Math.floor(p0 * c0.b + p1 * c1.b + p2 * c2.b);
-    return cusColor(red, green, blue);
-  }
 
   function setupAllColors() {
     var flag = true;

@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "./Play.module.css";
 
+function cusColor(red, green, blue) {
+  var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
+  return {
+    rgb: rgbstring, 
+    r: red, 
+    g: green,
+    b: blue, 
+    cssString: { backgroundColor: rgbstring }
+  };
+}
+
 function Play(props) {
-  const { level, targetColor, 
+  const { setMode, level, targetColor, 
         point, setPoint, 
         toolsUsed, setToolsUsed, 
         answerPct0, answerPct1, answerPct2,
@@ -11,16 +22,6 @@ function Play(props) {
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
   const [pct2, setPct2] = useState(0);
-
-  function cusColor(red, green, blue) {
-    var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
-    return {
-      rgb: rgbstring, 
-      r: red, 
-      g: green,
-      b: blue
-    };
-  }
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
@@ -35,14 +36,6 @@ function Play(props) {
         Math.abs(pct2 - answerPct2) < 0.02) 
     return true;
     else return false;
-  }
-
-  function ready() {
-    if(level === "Easy")
-      document.getElementById("targetColor").style.backgroundColor = targetColor.rgb;
-    document.getElementById("color0").style.backgroundColor = choice0.rgb;
-    document.getElementById("color1").style.backgroundColor = choice1.rgb;
-    document.getElementById("color2").style.backgroundColor = choice2.rgb;
   }
 
   useEffect(() => {
@@ -77,18 +70,19 @@ function Play(props) {
   }
 
   return (
-    <div className={styles.bigBox} onClick={ready}>
+    <div className={styles.bigBox}>
+      
       <h1 className={styles.title1}>Palette</h1>
 
       { level === "Easy"
-        ? <h3 className={styles.targetColor} id="targetColor">Target Color</h3> 
+        ? <h3 className={styles.targetColor} style={targetColor.cssString}>Target Color</h3> 
         : <></>
       }
       
       <div className={styles.container2}>
 
         <div className={styles.container}>
-          <div className={styles.chooseColor} id="color0"></div>
+          <div className={styles.chooseColor} style={choice0.cssString}></div>
           <input
             className={styles.enterPercentage}
             type="text"
@@ -98,7 +92,7 @@ function Play(props) {
         </div>
 
         <div className={styles.container}>
-          <div className={styles.chooseColor} id="color1"></div>
+          <div className={styles.chooseColor} style={choice1.cssString}></div>
           <input
             className={styles.enterPercentage}
             type="text"
@@ -108,7 +102,7 @@ function Play(props) {
         </div>
 
         <div className={styles.container}>
-          <div className={styles.chooseColor} id="color2"></div>
+          <div className={styles.chooseColor} style={choice2.cssString}></div>
           <input
             className={styles.enterPercentage}
             type="text"
@@ -127,6 +121,8 @@ function Play(props) {
         <div className={styles.effectColor} id="effectColor"></div>
 
         <input type="button" value="Tool" onClick={tool} /> 
+
+        <button onClick={() => setMode("Guess")}>Play Again</button>
 
       </div>
     </div>

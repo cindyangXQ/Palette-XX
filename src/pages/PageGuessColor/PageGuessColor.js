@@ -4,7 +4,7 @@ import TargetColor from "../../components/TargetColor";
 import Play from "../../components/Play";
 
 function PageGuessColor(props) {
-  const [targetColor, setTargetColor] = useState("");
+  const [targetColor, setTargetColor] = useState({});
   const [show, setShow] = useState("showTarget");
   const [choice0, setChoice0] = useState({});
   const [choice1, setChoice1] = useState({});
@@ -12,7 +12,7 @@ function PageGuessColor(props) {
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
   const [pct2, setPct2] = useState(0);
-  const { level, point, setPoint, toolsUsed, setToolsUsed } = props;
+  const { setMode, level, point, setPoint, toolsUsed, setToolsUsed } = props;
 
   return (
     <div className={styles.bigBox}>
@@ -23,13 +23,10 @@ function PageGuessColor(props) {
             setPct0={setPct0} setPct1={setPct1} setPct2={setPct2}
           />
         : <Play 
-            level={level} 
-            targetColor={targetColor} 
-            point={point} 
-            setPoint={setPoint}
-            toolsUsed={toolsUsed}
-            setToolsUsed={setToolsUsed}
-            pct0={pct0} pct1={pct1} pct2={pct2}
+            setMode={setMode} level={level} targetColor={targetColor} 
+            point={point} setPoint={setPoint}
+            toolsUsed={toolsUsed} setToolsUsed={setToolsUsed}
+            answerPct0={pct0} answerPct1={pct1} answerPct2={pct2}
             choice0={choice0} choice1={choice1} choice2={choice2}
           />
       }
