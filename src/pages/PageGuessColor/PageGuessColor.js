@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./PageGuessColor.module.css";
 import AppShell from "../../components/AppShell";
-import TargetColor from "./TargetColor";
-import Play from "./Play";
+import TargetColor from "../../components/TargetColor";
+import Play from "../../components/Play";
 
 function PageGuessColor(props) {
   const [Color, setColor] = useState("");

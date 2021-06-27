@@ -1,6 +1,6 @@
-import Timer from "./Timer";
-import CurrentState from "./CurrentState";
-import ColorList from "./ColorList";
+import Timer from "../Timer";
+import CurrentState from "../CurrentState";
+import ColorList from "../ColorList";
 import {useState} from "react";
 import styles from "./Play.module.css";
 import { Button } from "@material-ui/core";
