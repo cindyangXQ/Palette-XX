@@ -18,30 +18,32 @@ function App() {
   const [ level, setLevel ] = useState("False");
   const [ point, setPoint ] = useState(500);
   const [ toolsUsed, setToolsUsed] = useState(0);
+  
   return (
     <div className="App">
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
           <AppShell setMode={setMode} />
-          {mode === "Mode" ? (
-            <PageMode setMode={setMode} />
-          ) : mode === "Difficulty" ? (
-            <PageDifficulty setMode={setMode} setLevel={setLevel} />  
-          ) : mode === "Guess" ? (
-            <PageGuessColor 
-              level={level} 
-              point={point} 
-              setPoint={setPoint}
-              toolsUsed={toolsUsed} 
-              setToolsUsed={setToolsUsed}
-            />
-          ) : mode === "Mix" ? (
-            <PageMix />
-          ) : mode === "Profile" ? (
-            <PageProfile point={point}/>
-          ) : (   // mode === "Collection" ?
-            <PageCollection />
-          )}
+          { mode === "Mode" 
+            ? <PageMode setMode={setMode} />
+            : mode === "Difficulty" 
+            ? <PageDifficulty setMode={setMode} setLevel={setLevel} />  
+            : mode === "Guess" 
+            ? <PageGuessColor 
+                level={level} 
+                point={point} 
+                setPoint={setPoint}
+                toolsUsed={toolsUsed} 
+                setToolsUsed={setToolsUsed}
+              />
+            : mode === "Mix" 
+            ? <PageMix />
+            : mode === "Profile" 
+            ? <PageProfile point={point} />
+            : mode === "Collection" 
+            ? <PageCollection /> 
+            : <></>
+          }
         </IfFirebaseAuthed>
         <IfFirebaseUnAuthed>
           <PageLogin />

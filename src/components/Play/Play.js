@@ -13,7 +13,7 @@ function cusColor(red, green, blue) {
 }
 
 function Play(props) {
-  const { setMode, level, targetColor, 
+  const { level, setShow, targetColor, 
         point, setPoint, 
         toolsUsed, setToolsUsed, 
         answerPct0, answerPct1, answerPct2,
@@ -74,7 +74,7 @@ function Play(props) {
       
       <h1 className={styles.title1}>Palette</h1>
 
-      { level === "Easy"
+      { level === "Easy" || level === "Medium"
         ? <h3 className={styles.targetColor} style={targetColor.cssString}>Target Color</h3> 
         : <></>
       }
@@ -122,7 +122,7 @@ function Play(props) {
 
         <input type="button" value="Tool" onClick={tool} /> 
 
-        <button onClick={() => setMode("Guess")}>Play Again</button>
+        <button onClick={() => setShow("showTarget")}>Play Again</button>
 
       </div>
     </div>

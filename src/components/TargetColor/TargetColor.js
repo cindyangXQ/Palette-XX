@@ -29,7 +29,7 @@ function generateMix(c0, c1, c2, p0, p1, p2) {
 
 function TargetColor(props) {
   const [check, setCheck] = useState(true);
-  const { setShow, setTargetColor, 
+  const { level, setShow, setTargetColor, 
           setChoice0, setChoice1, setChoice2, 
           setPct0, setPct1, setPct2 } = props;
 
@@ -39,9 +39,15 @@ function TargetColor(props) {
     var p0, p1, p2;
     var temp;
     while(flag) {
-      c0 = randomColor();
-      c1 = randomColor();
-      c2 = randomColor();
+      if(level === "Easy") {
+        c0 = cusColor(255, 0, 0);
+        c1 = cusColor(0, 255, 0);
+        c2 = cusColor(0, 0, 255);
+      } else {
+        c0 = randomColor();
+        c1 = randomColor();
+        c2 = randomColor();
+      }
       p0 = Math.random();
       p1 = Math.random();
       p2 = Math.random();

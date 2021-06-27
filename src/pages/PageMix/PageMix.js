@@ -20,14 +20,13 @@ function randomColor() {
   return cusColor(red, green, blue);
 }
 
-function PageMix(props) {
+function PageMix() {
   const [choice0, setChoice0] = useState(randomColor());
   const [choice1, setChoice1] = useState(randomColor());
   const [choice2, setChoice2] = useState(randomColor());
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
   const [pct2, setPct2] = useState(0);
-  const { setMode } = props;
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
@@ -101,7 +100,15 @@ function PageMix(props) {
 
         <div className={styles.effectColor} id="effectColor"></div>
 
-        <button onClick={() => setMode("Mix")}>Play Again</button>
+        <button 
+          onClick={() => {
+            setChoice0(randomColor());
+            setChoice1(randomColor());
+            setChoice2(randomColor());
+          }}
+        >
+          Play again with another group of randomly generated colors
+        </button>
 
       </div>
     </div>
