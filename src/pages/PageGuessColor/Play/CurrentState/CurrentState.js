@@ -5,7 +5,6 @@ function CurrentState(props) {
   const {red, green, blue} = props;
   console.log(red);
   useEffect(()=>{
-    document.getElementById("info").innerHTML="RGB( "+red+" , "+green+" , "+blue+" )";
     document.getElementById("state").style.backgroundColor="rgb(" + red + ", " + green + ", " + blue + ")";
   },[red, green, blue])
   return (
@@ -16,7 +15,7 @@ function CurrentState(props) {
       </style>
       <h6 className={styles.title}>CURRENT STATE</h6>
       <div id="state" className={styles.state} style={{backgroundColor:"#000000"}}/>
-      <p id="info" className={styles.info}>RGB ( 0 , 0 , 0 )</p>
+      
     </div>
   );
 }
