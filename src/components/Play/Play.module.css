@@ -1,56 +1,107 @@
-.title1 {
-  text-align: center;
-  margin-top: -10px;
-  padding: 15px;
-  font-size: 60px;
+.success{
+  position:fixed;
+  margin-top:-30%;
+  margin-left:27%;
+  font-size:70px;
+  font-family: 'Pacifico', cursive;
+  color:rgb(255,102,196);
+  text-shadow: rgb(0 255 255) -2px -2px 0px, rgb(255 0 255) 1px 1px 0px;
+  filter: opacity(1);
 }
 
-.bigBox {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(45deg, #9fbaa8, #31354c);
-}
-  
-.container {
-  display: flex;
-  align-items: center;
-}
-
-.container2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.failed{
+  position:fixed;
+  margin-top:-25%;
+  margin-left:33%;
+  color:#BEBDBF;
+  font-size:70px;
+  transform: translateZ(0px);
+  filter: drop-shadow( #d2bdff 0px 0px 2.38416px) drop-shadow(rgba(221, 221, 221, 0.75) 0px 0px 16.9208px) drop-shadow(rgba(221, 221, 221, 0.44) 0px 0px 50.7624px);
+  --color-override: rgb(249,249,249);
 }
 
-.targetColor {
-  text-align: center;
-  margin: auto;
-  height: 10%;
-  width: 40%;
+.button{
+  color:#d2bdff;
+  border-color:#d2bdff;
+  height:40px;
+  width:180px;
+  margin-left:30px;
+  font-size:15px;
 }
 
-.chooseColor {
-  border-radius: 50%;
+.time{
+  z-index:3;
+  position:fixed;
+  color:white;
+  margin-top:-20%;
+  margin-left:39%;
+  font-size:25px;
+  text-shadow: #8962df -2px -2px 0px, #888888 1px 1px 0px;
+}
+
+.buttons{
+  margin-left:32%;
+  margin-top:-12%;
+}
+
+.mask{
+  position:fixed;
+  width:110%;
+  height:110%;
+  margin-top:-42%;
+  background-color:#000000c3;
+}
+
+.butt{
+  position: relative;
   height: 40px;
-  width: 40px;
-  margin: 10px;
+  width: 130px;
+  margin-left:-51.5%;
+  border-radius: 2px;
+  border-style: solid;
+  border-color: white;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer
 }
 
-.effectColor {
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  margin: 10px;
+.butt:hover{
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #03a9f4);
+  background-size: 400%;
 }
 
-.enterPercentage {
-  height: 30px;
-  margin: 10px;
+.butt:before{
+  content: '';
+  position: absolute;
+  background: inherit;
+  top: -5px;
+  right:-5px;
+  bottom: -5px;
+  left: -5px;
+  border-radius: 50px;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
-.submitButton {
-  height: 30px;
-  margin: 10px;
+.butt:hover:before{
+  opacity: 1;
+  z-index: -1;
 }
 
+.butt:hover{
+  z-index: 1;
+  animation: glow 8s linear infinite;
+}
+
+@keyframes glow {
+  0%{
+      background-position: 0%;
+  }
+  100%{
+      background-position: 400%;
+  }
+}

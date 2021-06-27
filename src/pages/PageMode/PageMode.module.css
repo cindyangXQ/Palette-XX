@@ -2,14 +2,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #d1dbbd;
-}
-
-strong {
-  margin-top: 50%;
-  z-index: 3;
-  color: snow;
-  font-family: "Quicksand", sans-serif;
+  background-color: #797c81;
 }
 
 .Guess {

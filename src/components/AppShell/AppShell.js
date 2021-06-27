@@ -6,6 +6,7 @@ import logo from "./logo.png";
 function AppShell(props) {
   const { setMode } = props;
   const handleLogout = (firebase) => {
+    setGuess("False");
     firebase.auth().signOut();
   };
 
