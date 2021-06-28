@@ -5,6 +5,13 @@
   background-color: #d1dbbd;
 }
 
+strong {
+  margin-top: 50%;
+  z-index: 3;
+  color: snow;
+  font-family: "Quicksand", sans-serif;
+}
+
 .guess {
   padding: 0px 0px 0px 0px;
   position: relative;
