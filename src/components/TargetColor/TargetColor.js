@@ -73,25 +73,25 @@ function TargetColor(props) {
 
   return (
     <div className={styles.container}>
-      <ButtonBase
-        className={styles.target}
-        onClick={handleClick}
-      >
-        <h2 className={styles.inbox} id="target">
-          Click To Start
-        </h2>
-      </ButtonBase>
-      <Button
-        variant="outlined"
-        disabled={check}
-        id="confirmButton"
-        className={styles.confirm}
-        onClick={() => {
-          setShow("showPlay");
-        }}
-      >
-        CONFIRM
-      </Button>
+        <ButtonBase
+          className={styles.target}
+          onClick={handleClick}
+        >
+          <h2 className={styles.inbox} id="target">
+            Click To Start
+          </h2>
+        </ButtonBase>
+        <Button
+          variant="outlined"
+          disabled={check}
+          id="confirmButton"
+          className={styles.confirm}
+          onClick={() => {
+            setShow("showPlay");
+          }}
+        >
+          CONFIRM
+        </Button>
     </div>
   );
 }

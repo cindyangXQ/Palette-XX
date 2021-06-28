@@ -45,31 +45,28 @@ function FormDialog(props) {
         Change This Color
       </Button>
       <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Set this color choice to: </DialogTitle>
+        <DialogTitle id="form-dialog-title">Set this color to: </DialogTitle>
         <DialogContent>
           <DialogContentText>
             eg. rgb(12, 34, 56)
           </DialogContentText>
           <TextField
+            autoFocus
             margin="dense"
             id="name"
             label="r"
-            type="email"
             onChange={(event) => setR(event.target.value)}
           />
           <TextField
             margin="dense"
             id="name"
             label="g"
-            type="email"
             onChange={(event) => setG(event.target.value)}
           />
           <TextField
-            autoFocus
             margin="dense"
             id="name"
             label="b"
-            type="email"
             onChange={(event) => setB(event.target.value)}
           />
         </DialogContent>

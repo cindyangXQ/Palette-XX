@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Play.module.css";
+import Timer from "../Timer";
+import CurrentState from "../CurrentState";
+import ColorList from "../ColorList";
+import { Button } from "@material-ui/core";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -22,6 +26,8 @@ function Play(props) {
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
   const [pct2, setPct2] = useState(0);
+  const [time, setTime] = useState("");
+  const [result, setResult] = useState("");
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
@@ -38,16 +44,17 @@ function Play(props) {
     else return false;
   }
 
-  useEffect(() => {
-    document.getElementById("effectColor").style.backgroundColor = generateMix().rgb;
-  });
-
-  function handleSubmit() {
-    if(checkAnswer()) {
-      alert("Successful!");
+  function handleResult() {
+    document.getElementById("mask").style.display="block";
+    document.getElementById("buttons").style.display="block";
+    if(checkAnswer()){
+      setResult("success");
+      document.getElementById("success").style.display="block";
+      document.getElementById("score").style.display="block";
       setPoint(prevstate => prevstate + 1);
-    } else {
-      alert("Try again!");
+    } else{
+      setResult("failed");
+      document.getElementById("failed").style.display="block";
     }
   }
 
@@ -59,73 +66,69 @@ function Play(props) {
       alert("I have told you all!");
     } else {
       if(tip === 0)
-        alert("Percentage of the first color is " + answerPct0 + ".");
+        alert("Percentage of the first color is " + Math.round(answerPct0*100) + ".");
       else if(tip === 1)
-        alert("Percentage of the second color is " + answerPct1 + ".");
+        alert("Percentage of the second color is " + Math.round(answerPct1*100) + ".");
       else //if(tip === 2)
-        alert("Percentage of the third color is " + answerPct2 + ".");
+        alert("Percentage of the third color is " + Math.round(answerPct2*100) + ".");
       setTip(prevstate => prevstate + 1);
       setToolsUsed(prevstate => prevstate + 1);
     }
   }
 
   return (
-    <div className={styles.bigBox}>
-      
-      <h1 className={styles.title1}>Palette</h1>
-
-      { level === "Easy" || level === "Medium"
-        ? <h3 className={styles.targetColor} style={targetColor.cssString}>Target Color</h3> 
-        : <></>
-      }
-      
-      <div className={styles.container2}>
-
-        <div className={styles.container}>
-          <div className={styles.chooseColor} style={choice0.cssString}></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct0(event.target.value)}
-          />
+    <>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      </style>
+      <div className={styles.container}>
+        <CurrentState 
+          red={generateMix().r} 
+          green={generateMix().g} 
+          blue={generateMix().b} 
+        />
+        <Timer 
+          level={level}
+          targetColor={targetColor}
+          setTime={setTime} 
+          result={result} 
+        />
+        <ColorList 
+          setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
+          choice0={choice0} choice1={choice1} choice2={choice2}
+        />
+        <div className={styles.containerRow}>
+          <Button 
+            variant="outlined" 
+            className={styles.button}
+            onClick={handleResult} 
+          >
+            Submit
+          </Button>
+          <Button 
+            variant="outlined" 
+            className={styles.button} 
+            onClick={tool}
+          >
+            Tool
+          </Button>
         </div>
 
-        <div className={styles.container}>
-          <div className={styles.chooseColor} style={choice1.cssString}></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct1(event.target.value)}
-          />
+        <div id="mask" className={styles.mask} style={{display:"none"}}/>
+        <div id="success" className={styles.success} style={{display:"none"}}>⭐SUCCESS!⭐</div>
+        <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
+        <div id="score" className={styles.time} style={{display:"none"}}>Your Score: {time}</div>
+        <div id="buttons" className={styles.buttons} style={{display:"none"}}>
+          <Button 
+            variant="outlined" 
+            className={styles.button} 
+            onClick={() => setShow("showTarget")}
+          >
+            Play Again
+          </Button>
         </div>
-
-        <div className={styles.container}>
-          <div className={styles.chooseColor} style={choice2.cssString}></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct2(event.target.value)}
-          />
-        </div>
-
-        <button
-          className={styles.submitButton}
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>  
-
-        <div className={styles.effectColor} id="effectColor"></div>
-
-        <input type="button" value="Tool" onClick={tool} /> 
-
-        <button onClick={() => setShow("showTarget")}>Play Again</button>
-
       </div>
-    </div>
+    </>
   );
 }
   

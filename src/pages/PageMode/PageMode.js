@@ -14,7 +14,7 @@ function PageMode(props) {
       </style>
       <ButtonBase
         variant="contained"
-        className={styles.Guess}
+        className={styles.guess}
         onClick={() => {
           setMode("Difficulty");
         }}
@@ -27,7 +27,7 @@ function PageMode(props) {
 
       <ButtonBase 
         variant="contained" 
-        className={styles.Mix}
+        className={styles.mix}
         onClick={() => {
           setMode("Mix");
         }}
@@ -40,7 +40,7 @@ function PageMode(props) {
 
       <ButtonBase 
         variant="contained" 
-        className={styles.Profile}
+        className={styles.profile}
         onClick={() => {
           setMode("Profile");
         }}
@@ -51,7 +51,7 @@ function PageMode(props) {
 
       <ButtonBase 
         variant="contained" 
-        className={styles.Collection}
+        className={styles.collection}
         onClick={() => {
           setMode("Collection");
         }}

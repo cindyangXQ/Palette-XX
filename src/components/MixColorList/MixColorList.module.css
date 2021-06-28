@@ -1,0 +1,33 @@
+.box {
+  margin-top: 50px;
+  margin-left: 45%;
+}
+
+.color {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-top: 15px;
+  border-style: solid;
+  border-color: #313540;
+  border-width: 1.5px;
+}
+
+.style1 {
+  margin-right: -41px;
+  margin-left: 35px;
+  margin-top: 65px;
+}
+
+.style2 {
+  margin-top: 65px;
+  margin-left: 20px;
+  color: #313540;
+}
+
+.containerRow {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: auto;
+  align-items: center;
+}
