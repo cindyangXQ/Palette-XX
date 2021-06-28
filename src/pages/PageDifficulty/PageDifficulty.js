@@ -13,7 +13,7 @@ function PageDifficulty(props) {
       <h1 className={styles.title1}>Guess!</h1>
       <h3 className={styles.title2}>Select level of difficulty:</h3>
       <div className={styles.container2}>
-        <ButtonBase
+        <div
           variant="contained"
           className={styles.base}
           onClick={() => {
@@ -22,9 +22,9 @@ function PageDifficulty(props) {
           }}
         >
           <strong className={styles.menu}>Easy</strong>
-        </ButtonBase>
+        </div>
 
-        <ButtonBase
+        <div
           variant="contained"
           className={styles.base}
           onClick={() => {
@@ -33,9 +33,9 @@ function PageDifficulty(props) {
           }}
         >
           <strong className={styles.menu}>Medium</strong>
-        </ButtonBase>
+        </div>
 
-        <ButtonBase
+        <div
           variant="contained"
           className={styles.base}
           onClick={() => {
@@ -44,7 +44,7 @@ function PageDifficulty(props) {
           }}
         >
           <strong className={styles.menu}>Difficult</strong>
-        </ButtonBase>
+        </div>
       </div>
     </div>
   );

@@ -73,15 +73,17 @@ function TargetColor(props) {
 
   return (
     <div className={styles.container}>
-        <ButtonBase
+        <div
           className={styles.target}
           onClick={handleClick}
         >
           <h2 className={styles.inbox} id="target">
             Click To Start
           </h2>
-        </ButtonBase>
+        </div>
         <Button
+          style={{marginLeft: "45%", marginTop: "5%", color: "#31606f",
+                  borderWidth: "2px", borderColor: "#31606f"}}
           variant="outlined"
           disabled={check}
           id="confirmButton"

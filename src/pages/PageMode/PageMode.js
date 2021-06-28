@@ -1,5 +1,5 @@
 import styles from "./PageMode.module.css";
-import { ButtonBase } from "@material-ui/core";
+import { ButtonBase, Button } from "@material-ui/core";
 import guessMusic from "./guess.mp4";
 import mixMusic from "./mix.mp4";
 import profilePic from "./profile.png";
@@ -12,8 +12,7 @@ function PageMode(props) {
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
       </style>
-      <ButtonBase
-        variant="contained"
+      <div
         className={styles.guess}
         onClick={() => {
           setMode("Difficulty");
@@ -23,10 +22,9 @@ function PageMode(props) {
           <source src={guessMusic} type="video/mp4" />
         </video>
         <strong className={styles.guessTitle}>GUESS</strong>
-      </ButtonBase>
+      </div>
 
-      <ButtonBase 
-        variant="contained" 
+      <div
         className={styles.mix}
         onClick={() => {
           setMode("Mix");
@@ -36,10 +34,9 @@ function PageMode(props) {
           <source src={mixMusic} type="video/mp4" />
         </video>
         <strong className={styles.mixTitle}>MIX</strong>
-      </ButtonBase>
+      </div>
 
-      <ButtonBase 
-        variant="contained" 
+      <div
         className={styles.profile}
         onClick={() => {
           setMode("Profile");
@@ -47,17 +44,16 @@ function PageMode(props) {
       >
         <img className={styles.Img} src={profilePic} alt="" />
         <strong className={styles.profileTitle}>PROFILE</strong>
-      </ButtonBase>
+      </div>
 
-      <ButtonBase 
-        variant="contained" 
+      <div
         className={styles.collection}
         onClick={() => {
           setMode("Collection");
         }}
       >
         <strong className={styles.collectionTitle}>COLLECTION</strong>
-      </ButtonBase>
+      </div>
     </div>
   );
 }

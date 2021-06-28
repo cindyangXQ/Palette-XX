@@ -1,19 +1,20 @@
 .container {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: #d1dbbd;
 }
 
 .title1 {
-  color: black;
+  color: #412619;
   text-align: center;
   font-size: 75px;
-  margin-bottom: 50px;
 }
 
 .title2 {
+  color:#412619;
   text-align: center;
+  margin-bottom:1%;
 }
 
 strong {
@@ -25,15 +26,15 @@ strong {
 
 .base {
   background-color: #313540;
-  height: 80px;
+  height: 60px;
   width: 300px;
-  margin: 10px auto 50px auto; 
+  margin:2% auto 2% auto;
   border-radius: 5px;
+  text-align:center;
 }
 
 .menu {
-  margin-top: -5px;
-  text-align: center;
+  margin-top:20px;
   font-size: 25px;
 }
 

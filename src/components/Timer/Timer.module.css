@@ -1,5 +1,6 @@
 .wraper {
-  margin-top: -700px;
+  position:absolute;
+  margin-top: -42%;
   margin-left: 45%;
 }
 

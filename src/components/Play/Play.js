@@ -98,20 +98,20 @@ function Play(props) {
           choice0={choice0} choice1={choice1} choice2={choice2}
         />
         <div className={styles.containerRow}>
-          <Button 
+          <div 
             variant="outlined" 
             className={styles.button}
             onClick={handleResult} 
           >
             Submit
-          </Button>
-          <Button 
+          </div>
+          <div 
             variant="outlined" 
             className={styles.button} 
             onClick={tool}
           >
             Tool
-          </Button>
+          </div>
         </div>
 
         <div id="mask" className={styles.mask} style={{display:"none"}}/>
@@ -119,13 +119,13 @@ function Play(props) {
         <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
         <div id="score" className={styles.time} style={{display:"none"}}>Your Score: {time}</div>
         <div id="buttons" className={styles.buttons} style={{display:"none"}}>
-          <Button 
+          <div 
             variant="outlined" 
             className={styles.button2} 
             onClick={() => setShow("showTarget")}
           >
             Play Again
-          </Button>
+          </div>
         </div>
       </div>
     </>
