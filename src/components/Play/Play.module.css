@@ -8,7 +8,7 @@
 .success{
   position:fixed;
   margin-top:-30%;
-  margin-left:27%;
+  margin-left:32%;
   font-size:70px;
   font-family: 'Pacifico', cursive;
   color:rgb(255,102,196);
@@ -19,7 +19,7 @@
 .failed{
   position:fixed;
   margin-top:-25%;
-  margin-left:33%;
+  margin-left:36%;
   color:#BEBDBF;
   font-size:70px;
   transform: translateZ(0px);
@@ -36,18 +36,26 @@
   font-size: 15px;
 }
 
+.button2 {
+  color: #d1dbbd;
+  border-color: #d1dbbd;
+  height: 40px;
+  width: 180px;
+  font-size: 15px;
+}
+
 .time{
   z-index:3;
   position:fixed;
   color:white;
   margin-top:-20%;
-  margin-left:39%;
+  margin-left:42%;
   font-size:25px;
   text-shadow: #8962df -2px -2px 0px, #888888 1px 1px 0px;
 }
 
 .buttons{
-  margin: 39%;
+  margin: 44%;
   margin-top:-12%;
 }
 
@@ -55,7 +63,7 @@
   position:fixed;
   width:110%;
   height:110%;
-  margin-top:-42%;
+  margin-top:-800px;
   background-color:#000000c3;
 }
 

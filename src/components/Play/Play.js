@@ -121,7 +121,7 @@ function Play(props) {
         <div id="buttons" className={styles.buttons} style={{display:"none"}}>
           <Button 
             variant="outlined" 
-            className={styles.button} 
+            className={styles.button2} 
             onClick={() => setShow("showTarget")}
           >
             Play Again
