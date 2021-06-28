@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./Timer.module.css";
 
 const Timer = (props) => {
-  const { Color, setTime, result } = props;
+  const { level, targetColor, setTime, result } = props;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true);
-
-  function reset() {
-    setSeconds(0);
-    setIsActive(false);
-  }
 
   useEffect(() => {
     if (result === "") {
@@ -17,7 +12,7 @@ const Timer = (props) => {
       setTime(document.getElementById("time").innerText);
       setIsActive(false);
     }
-  });
+  }, [result, setTime]);
   useEffect(() => {
     let interval = null;
     if (isActive) {
@@ -31,18 +26,21 @@ const Timer = (props) => {
   }, [isActive, seconds]);
 
   return (
-    <div className="app">
+    <div>
       <div className={styles.wraper}>
-        <span className={styles.text} style={{ float: "left" }}>
-          Target Color:{" "}
-        </span>
-        <div
-          className={styles.color}
-          style={{
-            backgroundColor:
-              "rgb(" + Color.red + ", " + Color.green + ", " + Color.blue + ")"
-          }}
-        />
+        { level === "Easy" || level === "Medium"
+          ? <>
+              <span className={styles.text} style={{ float: "left" }}>
+                Target Color:{" "}
+              </span>
+              <div
+                className={styles.color}
+                style={targetColor.cssString}
+              />
+            </>
+          : <></>
+        }
+        
         <span className={styles.text}>
           Timer:{" "}
           <span id="time">

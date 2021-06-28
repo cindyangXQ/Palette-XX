@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./PageMix.module.css";
-import FormDialog from "../../components/FormDialog/FormDialog";
+import CurrentState from "../../components/CurrentState";
+import MixColorList from "../../components/MixColorList";
+import { Button } from "@material-ui/core";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -35,82 +37,43 @@ function PageMix() {
     return cusColor(red, green, blue);
   }
 
-  useEffect(() => {
-    document.getElementById("effectColor").style.backgroundColor = generateMix().rgb;
-  });
-
   function handleSubmit() {
     alert("Added to Collection!");
   }
 
   return (
-    <div className={styles.bigBox}>
-      <h1 className={styles.title1}>Palette</h1>
-
-      <div className={styles.container2}>
-
-        <div className={styles.container}>
-          <div 
-            className={styles.chooseColor} 
-            style={choice0.cssString}
-          ></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct0(event.target.value)}
-          />
-          <FormDialog setChoice={setChoice0} />
+    <div className={styles.container}>
+        <CurrentState 
+          red={generateMix().r} 
+          green={generateMix().g} 
+          blue={generateMix().b} 
+        />
+        <h1 className={styles.title1}>Mix!</h1>
+        <MixColorList 
+          setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
+          choice0={choice0} choice1={choice1} choice2={choice2}
+          setChoice0={setChoice0} setChoice1={setChoice1} setChoice2={setChoice2}
+        />
+        <div className={styles.containerRow}>
+          <Button
+            variant="outlined"
+            className={styles.button} 
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>  
+          <Button 
+            variant="outlined"
+            className={styles.button} 
+            onClick={() => {
+              setChoice0(randomColor());
+              setChoice1(randomColor());
+              setChoice2(randomColor());
+            }}
+          >
+            Play Again
+          </Button>
         </div>
-
-        <div className={styles.container}>
-          <div 
-            className={styles.chooseColor} 
-            style={choice1.cssString}
-          ></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct1(event.target.value)}
-          />
-          <FormDialog setChoice={setChoice1} />
-        </div>
-
-        <div className={styles.container}>
-          <div 
-            className={styles.chooseColor} 
-            style={choice2.cssString}
-          ></div>
-          <input
-            className={styles.enterPercentage}
-            type="text"
-            placeholder="Enter percentages here"
-            onChange={(event) => setPct2(event.target.value)}
-          />
-          <FormDialog setChoice={setChoice2} />
-        </div>
-
-        <button
-          className={styles.submitButton}
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>  
-
-        <div className={styles.effectColor} id="effectColor"></div>
-
-        <button 
-          onClick={() => {
-            setChoice0(randomColor());
-            setChoice1(randomColor());
-            setChoice2(randomColor());
-          }}
-        >
-          Play again with another group of randomly generated colors
-        </button>
-
-      </div>
     </div>
   );
 }

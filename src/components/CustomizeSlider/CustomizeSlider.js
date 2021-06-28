@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles, makeStyles } from "@material-ui/core";
 import { Slider } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
-import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,12 +63,10 @@ const PrettoSlider = withStyles({
 
 export default function CustomizedSlider(props) {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const {setState} = props
+  const { setPct } = props;
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-    setState(Math.ceil(value*2.55));
+  const handleSliderChange = (event, value) => {
+    setPct(value/100);
   };
 
   return (
