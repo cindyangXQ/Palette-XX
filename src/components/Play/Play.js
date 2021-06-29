@@ -37,9 +37,9 @@ function Play(props) {
   }
 
   function checkAnswer() {
-    if(Math.abs(pct0 - answerPct0) < 0.02 &&
-        Math.abs(pct1 - answerPct1) < 0.02 &&
-        Math.abs(pct2 - answerPct2) < 0.02) 
+    if(Math.abs(pct0 - answerPct0) < 0.08 &&
+        Math.abs(pct1 - answerPct1) < 0.08 &&
+        Math.abs(pct2 - answerPct2) < 0.08) 
     return true;
     else return false;
   }
