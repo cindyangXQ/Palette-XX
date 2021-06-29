@@ -115,19 +115,13 @@ function Play(props) {
           </button>
         </div>
 
-        <div id="mask" className={styles.mask} style={{display:"none"}}/>
+        <div id="mask" className={styles.mask} style={{display:"none"}} />
         <div id="success" className={styles.success} style={{display:"none"}}>⭐SUCCESS!⭐</div>
         <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
         <div id="score" className={styles.time} style={{display:"none"}}>Your Score: {time}</div>
-        <div id="buttons" className={styles.buttons} style={{display:"none"}}>
-          <div 
-            variant="outlined" 
-            className={styles.button2} 
-            onClick={() => setShow("showTarget")}
-          >
-            Play Again
-          </div>
-        </div>
+        <button id="buttons" 
+         className={styles.buttons} style={{display:"none"}}
+         onClick={()=>{setShow("showTarget")}}>PLAY AGAIN</button>
       </div>
     </>
   );
