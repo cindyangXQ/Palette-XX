@@ -11,7 +11,7 @@ strong {
 }
 
 .guess {
-  float:left;
+
   padding: 0px 0px 0px 0px;
   position: relative;
   background-color: #313540;
@@ -24,37 +24,36 @@ strong {
 
 .mix {
   padding: 0px 0px 0px 0px;
-  position:relative;
+  position:absolute;
   background-color: #313540;
   width: 25%;
   height: 40%;
-  margin-left: 42%;
+  margin-left: 2%;
   margin-top:5%;
   border-radius: 5px;
 }
 
 .profile {
   padding: 0px 0px 0px 0px;
-  position: relative;
+  position: absolute;
   background-color: #313540;
   width: 15%;
   height: 40%;
-  margin-left: 69%;
-  margin-top: -240px;
+  margin-left: 29%;
+  margin-top: 5%;
   border-radius: 5px;
 }
 
-.collection {
-  padding: 0px 0px 0px 0px;
-  position: relative;
+.collection{
+  position:absolute;
+  padding:0px 0px 0px 0px;
   background-color: #313540;
   width: 42%;
   height: 25%;
-  margin-left: 42%;
-  margin-top: 2%;
+  margin-left: 2%;
+  margin-top:2%;
   border-radius: 5px;
 }
-
 .guessTitle {
   position:absolute;
   text-align:center;

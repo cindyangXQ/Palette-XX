@@ -3,11 +3,12 @@ import { ButtonBase, Button } from "@material-ui/core";
 import guessMusic from "./guess.mp4";
 import mixMusic from "./mix.mp4";
 import profilePic from "./profile.png";
+import { MicNone } from "@material-ui/icons";
 
 function PageMode(props) {
   const { setMode } = props;
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{display:"flex"}}>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
@@ -23,6 +24,7 @@ function PageMode(props) {
         </video>
         <strong className={styles.guessTitle}>GUESS</strong>
       </div>
+      <div>
       <div
         className={styles.mix}
         onClick={() => {
@@ -34,7 +36,7 @@ function PageMode(props) {
         </video>
         <strong className={styles.mixTitle}>MIX</strong>
       </div>
-
+      
       <div
         className={styles.profile}
         onClick={() => {
@@ -44,7 +46,7 @@ function PageMode(props) {
         <img className={styles.Img} src={profilePic} alt="" />
         <strong className={styles.profileTitle}>PROFILE</strong>
       </div>
-
+      <div style={{clear:"both", float:"none", width:"40%", height:"50%"}} />
       <div
         className={styles.collection}
         onClick={() => {
@@ -52,6 +54,7 @@ function PageMode(props) {
         }}
       >
         <strong className={styles.collectionTitle}>COLLECTION</strong>
+      </div>
       </div>
       </div>
   );
