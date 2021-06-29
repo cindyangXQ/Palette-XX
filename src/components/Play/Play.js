@@ -87,6 +87,7 @@ function Play(props) {
           green={generateMix().g} 
           blue={generateMix().b} 
         />
+        
         <Timer 
           level={level}
           targetColor={targetColor}
@@ -98,20 +99,20 @@ function Play(props) {
           choice0={choice0} choice1={choice1} choice2={choice2}
         />
         <div className={styles.containerRow}>
-          <div 
+          <button
             variant="outlined" 
             className={styles.button}
             onClick={handleResult} 
           >
             Submit
-          </div>
-          <div 
+          </button>
+          <button
             variant="outlined" 
             className={styles.button} 
             onClick={tool}
           >
             Tool
-          </div>
+          </button>
         </div>
 
         <div id="mask" className={styles.mask} style={{display:"none"}}/>

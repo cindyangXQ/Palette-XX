@@ -34,7 +34,7 @@ const PrettoSlider = withStyles({
     color: "#313540",
     height: 8,
     marginLeft: 40,
-    marginTop: 40
+    marginTop: 26
   },
   thumb: {
     height: 24,

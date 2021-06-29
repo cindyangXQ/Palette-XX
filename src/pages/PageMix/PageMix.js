@@ -48,21 +48,21 @@ function PageMix() {
           green={generateMix().g} 
           blue={generateMix().b} 
         />
-        <h1 className={styles.title1}>Mix!</h1>
+        <h1 className={styles.title1}> MIX!</h1>
         <MixColorList 
           setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
           choice0={choice0} choice1={choice1} choice2={choice2}
           setChoice0={setChoice0} setChoice1={setChoice1} setChoice2={setChoice2}
         />
         <div className={styles.containerRow}>
-          <Button
+          <button
             variant="outlined"
             className={styles.button} 
             onClick={handleSubmit}
           >
             Submit
-          </Button>  
-          <Button 
+          </button>  
+          <button
             variant="outlined"
             className={styles.button} 
             onClick={() => {
@@ -72,7 +72,7 @@ function PageMix() {
             }}
           >
             Play Again
-          </Button>
+          </button>
         </div>
     </div>
   );

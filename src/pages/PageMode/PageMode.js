@@ -23,7 +23,6 @@ function PageMode(props) {
         </video>
         <strong className={styles.guessTitle}>GUESS</strong>
       </div>
-
       <div
         className={styles.mix}
         onClick={() => {
@@ -54,7 +53,7 @@ function PageMode(props) {
       >
         <strong className={styles.collectionTitle}>COLLECTION</strong>
       </div>
-    </div>
+      </div>
   );
 }
 
