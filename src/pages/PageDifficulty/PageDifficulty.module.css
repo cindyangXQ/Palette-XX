@@ -14,31 +14,33 @@
 .title2 {
   color:#412619;
   text-align: center;
-  margin-bottom:1%;
+  margin-bottom: 20px;
 }
 
-strong {
-  margin-top: 50%;
-  z-index: 3;
-  color: snow;
-  font-family: "Quicksand", sans-serif;
+.box {
+  height: 50%;
+  width: 28%;
+  margin: auto;
+  margin-top: 5%;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 10%;
+}
+
+.buttonBG {
+  background-color: #313540;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .base {
-  background-color: #313540;
-  height: 60px;
-  width: 300px;
-  margin:2% auto 2% auto;
-  border-radius: 5px;
-  text-align:center;
+  height: 100%;
+  width: 100%;
 }
 
-.menu {
-  margin-top:20px;
-  font-size: 25px;
-}
-
-.container2 {
-  display: flex;
-  flex-direction: column;
+.text {
+  color: snow;
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
 }

@@ -1,62 +1,70 @@
 import styles from "./PageMode.module.css";
-import { ButtonBase, Button } from "@material-ui/core";
+import { ButtonBase } from "@material-ui/core";
 import guessMusic from "./guess.mp4";
 import mixMusic from "./mix.mp4";
 import profilePic from "./profile.png";
-import { MicNone } from "@material-ui/icons";
 
 function PageMode(props) {
   const { setMode } = props;
   return (
-    <div className={styles.container} style={{display:"flex"}}>
+    <div className={styles.container}>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
       </style>
-      <div
-        className={styles.guess}
-        onClick={() => {
-          setMode("Difficulty");
-        }}
-      >
-        <video autoPlay="autoplay" loop="loop" muted className={styles.Video}>
-          <source src={guessMusic} type="video/mp4" />
-        </video>
-        <strong className={styles.guessTitle}>GUESS</strong>
+      <div className={styles.box}>
+        <ButtonBase 
+          className={styles.button1Pos}
+          onClick={() => {
+            setMode("Difficulty");
+          }}
+        >
+          <div className={styles.buttonBG}>
+            <video autoPlay="autoplay" loop="loop" muted className={styles.guessVideo}>
+              <source src={guessMusic} type="video/mp4" />
+            </video>
+            <strong className={styles.text1}>GUESS</strong>
+          </div>
+        </ButtonBase>
+
+        <ButtonBase
+          className={styles.button2Pos}
+          onClick={() => {
+            setMode("Mix");
+          }}
+        >
+          <div className={styles.buttonBG}>
+            <video autoPlay="autoplay" loop="loop" muted className={styles.mixVideo}>
+              <source src={mixMusic} type="video/mp4" />
+            </video>
+            <strong className={styles.text2}>MIX</strong>
+          </div> 
+        </ButtonBase>
+
+        <ButtonBase 
+          className={styles.button3Pos}
+          onClick={() => {
+            setMode("Profile");
+          }}
+        >
+          <div className={styles.buttonBG}>
+            <img src={profilePic} alt="" />
+            <strong className={styles.text3}>PROFILE</strong>
+          </div>
+        </ButtonBase>
+
+        <ButtonBase 
+          className={styles.button4Pos}
+          onClick={() => {
+            setMode("Collection");
+          }}
+        >
+          <div className={styles.buttonBG}>
+            <strong className={styles.text4}>COLLECTION</strong>
+          </div>
+        </ButtonBase>
       </div>
-      <div>
-      <div
-        className={styles.mix}
-        onClick={() => {
-          setMode("Mix");
-        }}
-      >
-        <video autoPlay="autoplay" loop="loop" muted className={styles.Video}>
-          <source src={mixMusic} type="video/mp4" />
-        </video>
-        <strong className={styles.mixTitle}>MIX</strong>
-      </div>
-      
-      <div
-        className={styles.profile}
-        onClick={() => {
-          setMode("Profile");
-        }}
-      >
-        <img className={styles.Img} src={profilePic} alt="" />
-        <strong className={styles.profileTitle}>PROFILE</strong>
-      </div>
-      <div style={{clear:"both", float:"none", width:"40%", height:"50%"}} />
-      <div
-        className={styles.collection}
-        onClick={() => {
-          setMode("Collection");
-        }}
-      >
-        <strong className={styles.collectionTitle}>COLLECTION</strong>
-      </div>
-      </div>
-      </div>
+    </div>
   );
 }
 

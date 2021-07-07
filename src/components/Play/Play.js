@@ -3,7 +3,7 @@ import styles from "./Play.module.css";
 import Timer from "../Timer";
 import CurrentState from "../CurrentState";
 import ColorList from "../ColorList";
-import { Button } from "@material-ui/core";
+import { ButtonBase } from "@material-ui/core";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -77,53 +77,64 @@ function Play(props) {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
       </style>
-      <div className={styles.container}>
+      <div className={styles.box}>
         <CurrentState 
           red={generateMix().r} 
           green={generateMix().g} 
           blue={generateMix().b} 
         />
-        
-        <Timer 
-          level={level}
-          targetColor={targetColor}
-          setTime={setTime} 
-          result={result} 
-        />
-        <ColorList 
-          setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
-          choice0={choice0} choice1={choice1} choice2={choice2}
-        />
-        <div className={styles.containerRow}>
-          <button
-            variant="outlined" 
-            className={styles.button}
-            onClick={handleResult} 
-          >
-            Submit
-          </button>
-          <button
-            variant="outlined" 
-            className={styles.button} 
-            onClick={tool}
-          >
-            Tool
-          </button>
+        <div className={styles.box2}>
+          <Timer 
+            level={level}
+            targetColor={targetColor}
+            setTime={setTime} 
+            result={result} 
+          />
+          <ColorList 
+            setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
+            choice0={choice0} choice1={choice1} choice2={choice2}
+          />
+          <div className={styles.containerRow}>
+            <div className={styles.buttonBG1}>
+              <ButtonBase
+                className={styles.base}
+                onClick={handleResult} 
+              >
+                <p className={styles.text}>Submit</p>
+              </ButtonBase>
+            </div>
+            <div className={styles.buttonBG2}>
+              <ButtonBase
+                className={styles.base}
+                onClick={tool} 
+              >
+                <p className={styles.text}>Tool</p>
+              </ButtonBase>
+            </div>
+          </div>
         </div>
-
-        <div id="mask" className={styles.mask} style={{display:"none"}} />
-        <div id="success" className={styles.success} style={{display:"none"}}>⭐SUCCESS!⭐</div>
-        <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
-        <div id="score" className={styles.time} style={{display:"none"}}>Your Score: {time}</div>
-        <button id="buttons" 
-         className={styles.buttons} style={{display:"none"}}
-         onClick={()=>{setShow("showTarget")}}>PLAY AGAIN</button>
       </div>
-    </>
+
+      <div id="mask" className={styles.mask} style={{display:"none"}} />
+      <div id="success" className={styles.success} style={{display:"none"}}>⭐SUCCESS!⭐</div>
+      <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
+      <div id="score" className={styles.score} style={{display:"none"}}>Your Score: {time}</div>
+      <div id="buttons"
+        className={styles.buttons} 
+        style={{display:"none"}}
+      >
+        <ButtonBase
+          className={styles.base}
+          onClick={() => {setShow("showTarget")}}
+        >
+          <strong>Play Again</strong>
+        </ButtonBase>
+      </div>
+    </div>
   );
 }
   

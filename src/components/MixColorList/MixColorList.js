@@ -7,7 +7,7 @@ function MixColorList(props) {
           choice0, choice1, choice2, 
           setChoice0, setChoice1, setChoice2 } = props;
   return (
-    <div className={styles.box}>
+    <div>
       <div className={styles.containerRow}>
         <div className={styles.color} style={choice0.cssString}/>
         <p className={styles.style1}>0</p>

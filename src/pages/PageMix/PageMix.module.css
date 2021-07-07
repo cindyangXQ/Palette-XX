@@ -1,33 +1,68 @@
 .container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #d1dbbd;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #d1dbbd;
 }
 
 .title1 {
-    color: #412619;
-    font-size: 75px;
-    margin-top: 1%;
-    margin-left: 57%;
+  color: #412619;
+  font-size: 75px;
+  text-align: center;
 }
 
-.button {
-    color: #7349ce;
-    border-color: #7349ce;
-    height: 40px;
-    width: 180px;
-    background-color:transparent;
-    border-width:1.5px;
-    border-radius:5px;
-    margin-left: 30px;
-    font-size: 15px;
+.box {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 0px;
+}
+
+.box2 {
+  height: 70%;
+  width: 100%;
+  margin-top: 10%;
+  display: grid;
+  grid-template-rows: 20% 60% 7%;
+  justify-content: space-around;
 }
 
 .containerRow {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    margin-left: 45%;
-    margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonBG1 {
+  float: left;
+  border-color: #7349ce;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1.5px;
+  height: 100%;
+  width: 120px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.buttonBG2 {
+  float: right;
+  border-color: #7349ce;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1.5px;
+  height: 100%;
+  width: 120px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.base {
+  height: 100%;
+  width: 100%;
+}
+  
+.text {
+  color: #7349ce;
+  font-size: 20px;
 }

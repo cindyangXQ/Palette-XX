@@ -4,8 +4,9 @@ import CustomizeSlider from "../CustomizeSlider";
 function ColorList(props) {
   const { setPct0, setPct1, setPct2,  
           choice0, choice1, choice2 } = props;
+
   return (
-    <div className={styles.box}>
+    <div>
       <div className={styles.style3}>
         <div className={styles.color} style={choice0.cssString}/>
         <p className={styles.style1}>0</p>

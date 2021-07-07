@@ -27,11 +27,11 @@ const Timer = (props) => {
 
   return (
     <div>
-      <div className={styles.wraper}>
+      <div>
         { level === "Easy" || level === "Medium"
           ? <>
-              <span className={styles.text} style={{ float: "left" }}>
-                Target Color:{" "}
+              <span className={styles.text}>
+                Target Color:
               </span>
               <div
                 className={styles.color}

@@ -67,33 +67,32 @@ function TargetColor(props) {
 
   function handleClick() {
     setCheck(false);
-    document.getElementById("target").innerHTML = "Click To Change Target Color";
-    document.getElementById("target").style.backgroundColor = setupAllColors().rgb;
+    document.getElementById("text").innerHTML = "Click To Change Target Color";
+    document.getElementById("bgc").style.backgroundColor = setupAllColors().rgb;
   }
 
   return (
     <div className={styles.container}>
-        <div
-          className={styles.target}
-          onClick={handleClick}
+      <div className={styles.tcbuttonBG} id="bgc">
+        <ButtonBase 
+          className={styles.base}
+          onClick={handleClick} 
         >
-          <h2 className={styles.inbox} id="target">
-            Click To Start
-          </h2>
-        </div>
+          <strong className={styles.text} id="text">Click To Start</strong>
+        </ButtonBase>
+      </div>
+      <div className={styles.cfmbuttonBG}>
         <Button
-          style={{marginLeft: "45%", marginTop: "5%", color: "#31606f",
-                  borderWidth: "2px", borderColor: "#31606f"}}
           variant="outlined"
           disabled={check}
-          id="confirmButton"
-          className={styles.confirm}
+          className={styles.base}
           onClick={() => {
             setShow("showPlay");
           }}
         >
           CONFIRM
         </Button>
+      </div>
     </div>
   );
 }
