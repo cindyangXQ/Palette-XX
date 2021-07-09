@@ -1,16 +1,16 @@
 .container {
-  position: fixed;
+  position: fixed; 
+  top: 0px;
   height: 100%;
   width: 100%;
   background-color: #d1dbbd;
+  z-index: -10;
 }
 
 .box {
-  height: 80%;
-  width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 5%;
+  height: 680px;
+  width: 1038px;
+  margin: 145px auto;
   display: grid;
   grid-template-columns: 30% 40% 26%;
   grid-template-rows: 62% 36%;
@@ -38,6 +38,7 @@
   font-family: "Quicksand", sans-serif;
   font-size: 55px;
   margin-top: -80%;
+  z-index: 10;
 }
 
 .text2 {
@@ -46,6 +47,7 @@
   font-family: "Quicksand", sans-serif;
   font-size: 45px;
   margin-top: -20%;
+  z-index: 10;
 }
 
 .text3 {
@@ -54,6 +56,7 @@
   font-family: "Quicksand", sans-serif;
   font-size: 35px;
   margin-top: -15%;
+  z-index: 10;
 }
 
 .text4 {
@@ -62,6 +65,7 @@
   font-family: "Quicksand", sans-serif;
   font-size: 35px;
   margin-top: 14%;
+  z-index: 10;
 }
 
 .guessVideo {

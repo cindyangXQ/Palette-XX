@@ -7,7 +7,8 @@ import profilePic from "./profile.png";
 function PageMode(props) {
   const { setMode } = props;
   return (
-    <div className={styles.container}>
+    <div>
+      <div className={styles.container}></div>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
@@ -20,7 +21,7 @@ function PageMode(props) {
           }}
         >
           <div className={styles.buttonBG}>
-            <video autoPlay="autoplay" loop="loop" muted className={styles.guessVideo}>
+            <video autoPlay="autoplay" loop="loop" muted="muted" className={styles.guessVideo}>
               <source src={guessMusic} type="video/mp4" />
             </video>
             <strong className={styles.text1}>GUESS</strong>
@@ -34,7 +35,7 @@ function PageMode(props) {
           }}
         >
           <div className={styles.buttonBG}>
-            <video autoPlay="autoplay" loop="loop" muted className={styles.mixVideo}>
+            <video autoPlay="autoplay" loop="loop" muted="muted" className={styles.mixVideo}>
               <source src={mixMusic} type="video/mp4" />
             </video>
             <strong className={styles.text2}>MIX</strong>

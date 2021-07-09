@@ -1,18 +1,31 @@
-.Toolbar {
-  position:fixed;
+.toolbar {
+  position: fixed;
+  top: 0px;
   background-color: #313540;
-  height: 20px;
+  width: 100%;
+  height: 65px;
+  margin-top: 0px;
   color: snow;
-
+  z-index: 10;
 }
 
-img {
-  height: 32px;
-  margin-right: 7px;
-  margin-top: -3px;
+.image {
+  height: 51px;
+  width: 51px;
+  margin: 7px 20px 7px 30px;
+  float: left;
 }
 
-.Title {
+.title {
   font-family: "Alex Brush", cursive;
   font-size: 30px;
+  line-height: 65px;
+  margin: 0px;
+  float: left;
+}
+
+.button {
+  margin-right: 30px;
+  height: 65px;
+  float: right;
 }

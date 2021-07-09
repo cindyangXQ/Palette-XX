@@ -72,7 +72,7 @@ function TargetColor(props) {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.tcbuttonBG} id="bgc">
         <ButtonBase 
           className={styles.base}

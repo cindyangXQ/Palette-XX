@@ -16,7 +16,8 @@ function PageGuessColor(props) {
   const [pct2, setPct2] = useState(0);
   
   return (
-    <div className={styles.container}>
+    <div>
+      <div className={styles.container}></div>
       {show === "showTarget" ? (
         <TargetColor 
           level={level} setShow={setShow} setTargetColor={setTargetColor}
