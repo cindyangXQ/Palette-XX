@@ -1,13 +1,14 @@
 .container {
-  position: fixed;
+  position: absolute;
+  top: 65px;
   width: 100%;
   height: 100%;
-  background-color: #d1dbbd;
 }
 
 .box {
-  height: 100%;
+  height: 890px;
   width: 100%;
+  margin-bottom: 0px;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-gap: 0px;
@@ -62,62 +63,78 @@
 }
 
 .mask{
-  float:left;
   position: fixed;
-  width:100%;
-  height:1500%;
-  margin-top: -300%;
+  top: 0px;
+  width: 100%;
+  height: 100%;
   background-color:#000000b3;
+  z-index: 3;
 }
 
 .success{
   z-index:4;
-  position: absolute;
-  margin-top:-32%;
-  margin-left:32%;
+  position: fixed;
+  height: 102px;
+  width: 572px;
+  top: 40%;
+  margin-top: -51px;
+  left: 50%;
+  margin-left: -286px;
+  color:rgb(255,102,196);
   font-size:70px;
   font-family: 'Pacifico', cursive;
-  color:rgb(255,102,196);
+  text-align: center;
   text-shadow: rgb(0 255 255) -2px -2px 0px, rgb(255 0 255) 1px 1px 0px;
   filter: opacity(1);
 }
 
 .failed{
   z-index:4;
-  position: absolute;
-  margin-top:-28%;
-  margin-left:36%;
+  position: fixed;
+  height: 100px;
+  width: 420px;
+  top: 45%;
+  margin-top: -50px;
+  left: 50%;
+  margin-left: -210px;
   color:#BEBDBF;
   font-size:70px;
-  transform: translateZ(0px);
+  text-align: center;
   filter: drop-shadow( #d2bdff 0px 0px 2.38416px) drop-shadow(rgba(221, 221, 221, 0.75) 0px 0px 16.9208px) drop-shadow(rgba(221, 221, 221, 0.44) 0px 0px 50.7624px);
   --color-override: rgb(249,249,249);
 }
 
 .score {
-  z-index:3;
-  position: absolute;
+  z-index:4;
+  position: fixed;
+  height: 36px;
+  width: 256px;
+  top: 53%;
+  margin-top:-18px;
+  left: 50%;
+  margin-left: -128px;
   color:white;
-  margin-top:-23%;
-  margin-left:42%;
   font-size:25px;
+  text-align: center;
   text-shadow: #8962df -2px -2px 0px, #888888 1px 1px 0px;
 }
 
 .buttons {
-  position: absolute;
-  z-index:5;
-  margin-top:-15%;
-  margin-left: 44%;
+  z-index: 4;
+  position: fixed;
+  height: 40px;
+  width: 180px;
+  top: 65%;
+  margin-top: -20px;
+  left: 50%;
+  margin-left: -90px;
   border-color: #d2bdff;
   border-style: solid;
   border-radius: 2px;
   border-width: 1.5px;
-  height: 40px;
-  width: 180px;
 }
 
-strong {
+.text2 {
   color: #d2bdff;
   font-size: 20px;
 }

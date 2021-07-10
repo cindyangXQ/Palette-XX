@@ -131,7 +131,7 @@ function Play(props) {
           className={styles.base}
           onClick={() => {setShow("showTarget")}}
         >
-          <strong>Play Again</strong>
+          <strong className={styles.text2}>Play Again</strong>
         </ButtonBase>
       </div>
     </div>

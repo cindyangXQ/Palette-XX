@@ -25,7 +25,8 @@
 }
 
 .button {
-  margin-right: 30px;
-  height: 65px;
+  height: 31px;
+  top: 17px;
+  right: 30px;
   float: right;
 }

@@ -42,45 +42,48 @@ function PageMix() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.box}>
-        <CurrentState 
-          red={generateMix().r} 
-          green={generateMix().g} 
-          blue={generateMix().b} 
-        />
-        <div className={styles.box2}>
-          <h1 className={styles.title1}>MIX!</h1>
-          <MixColorList 
-            setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
-            choice0={choice0} choice1={choice1} choice2={choice2}
-            setChoice0={setChoice0} setChoice1={setChoice1} setChoice2={setChoice2}
+    <>
+      <div className={styles.bg}></div>
+      <div className={styles.container}>
+        <div className={styles.box}>
+          <CurrentState 
+            red={generateMix().r} 
+            green={generateMix().g} 
+            blue={generateMix().b} 
           />
-          <div className={styles.containerRow}>
-            <div className={styles.buttonBG1}>
-              <ButtonBase
-                className={styles.base}
-                onClick={handleSubmit} 
-              >
-                <p className={styles.text}>Submit</p>
-              </ButtonBase>
-            </div>
-            <div className={styles.buttonBG2}>
-              <ButtonBase
-                className={styles.base}
-                onClick={() => {
-                  setChoice0(randomColor());
-                  setChoice1(randomColor());
-                  setChoice2(randomColor());
-                }}
-              >
-                <p className={styles.text}>Play Again</p>
-              </ButtonBase>
+          <div className={styles.box2}>
+            <h1 className={styles.title1}>MIX!</h1>
+            <MixColorList 
+              setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
+              choice0={choice0} choice1={choice1} choice2={choice2}
+              setChoice0={setChoice0} setChoice1={setChoice1} setChoice2={setChoice2}
+            />
+            <div className={styles.containerRow}>
+              <div className={styles.buttonBG1}>
+                <ButtonBase
+                  className={styles.base}
+                  onClick={handleSubmit} 
+                >
+                  <p className={styles.text}>Submit</p>
+                </ButtonBase>
+              </div>
+              <div className={styles.buttonBG2}>
+                <ButtonBase
+                  className={styles.base}
+                  onClick={() => {
+                    setChoice0(randomColor());
+                    setChoice1(randomColor());
+                    setChoice2(randomColor());
+                  }}
+                >
+                  <p className={styles.text}>Play Again</p>
+                </ButtonBase>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
   

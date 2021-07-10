@@ -8,7 +8,7 @@ function PageMode(props) {
   const { setMode } = props;
   return (
     <div>
-      <div className={styles.container}></div>
+      <div className={styles.bg}></div>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:ital,wght@1,200&display=swap');
