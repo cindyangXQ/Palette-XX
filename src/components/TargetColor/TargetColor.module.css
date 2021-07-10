@@ -1,31 +1,40 @@
-.tcbuttonBG {
+.container {
   position: absolute;
-  height: 230px;
-  width: 440px;
-  left: 50%;
-  margin: 165px -220px 0px;
-  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  background-color: #d1dbbd;
+}
+
+.target {
+  width: 30%;
+  height: 25%;
+  margin-left: 35%;
+  margin-top: 9%;
+  background-color: #d1dbbd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inbox {
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
   border-style: double;
-  border-width: 5px;
   border-color: azure;
+  margin: auto;
+  border-radius: 5px;
+  text-align: center;
+  padding: 15%;
+  font-size: 20px;
+  color: azure;
   background-color: transparent;
 }
 
-.cfmbuttonBG {
-  position: absolute;
-  height: 40px;
-  width: 100px;
-  left: 50%;
-  margin: 455px -50px 0px;
-}
-
-.base {
-  width: 100%;
-  height: 100%;
-}
-
-.text {
-  text-align: center;
-  color: azure;
-  font-size: 25px;
+.confirm {
+  width: 10%;
+  color: #31606f;
+  border-width: 2px;
+  border-color: #31606f;
 }
