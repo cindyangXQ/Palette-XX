@@ -1,5 +1,14 @@
+.bg {
+  position: fixed; 
+  top: 65px;
+  height: 100%;
+  width: 100%;
+  background-color: #d1dbbd;
+  z-index: -10;
+}
+
 .profilePic {
-  margin: 100px auto 50px auto;
+  margin: 165px auto 50px auto;
   border-radius: 50%;
   height: 150px;
   width: 150px;
@@ -13,11 +22,4 @@
   margin-left: 20%;
   margin-right: 20%;
   font-size: 20px;
-}
-
-.bigBox {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(45deg, #9fbaa8, #31354c);
 }

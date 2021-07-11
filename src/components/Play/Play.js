@@ -21,7 +21,9 @@ function Play(props) {
         point, setPoint, 
         toolsUsed, setToolsUsed, 
         answerPct0, answerPct1, answerPct2,
-        choice0, choice1, choice2 } = props;
+        choice0, choice1, choice2, 
+        collection, setCollection, 
+        gsColl, setGsColl } = props;
   const [tip, setTip] = useState(0);
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
@@ -52,6 +54,8 @@ function Play(props) {
       document.getElementById("success").style.display="block";
       document.getElementById("score").style.display="block";
       setPoint(prevstate => prevstate + 1);
+      setCollection([...collection, targetColor]);
+      setGsColl([...gsColl, targetColor]);
     } else{
       setResult("failed");
       document.getElementById("failed").style.display="block";

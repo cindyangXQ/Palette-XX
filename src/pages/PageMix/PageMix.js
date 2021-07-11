@@ -22,7 +22,8 @@ function randomColor() {
   return cusColor(red, green, blue);
 }
 
-function PageMix() {
+function PageMix(props) {
+  const { collection, setCollection, mixColl, setMixColl } = props;
   const [choice0, setChoice0] = useState(randomColor());
   const [choice1, setChoice1] = useState(randomColor());
   const [choice2, setChoice2] = useState(randomColor());
@@ -39,6 +40,16 @@ function PageMix() {
 
   function handleSubmit() {
     alert("Added to Collection!");
+    var c = generateMix();
+    setCollection([...collection, c]);
+    setMixColl([...mixColl, c]);
+    playAgain();
+  }
+
+  function playAgain() {
+    setChoice0(randomColor());
+    setChoice1(randomColor());
+    setChoice2(randomColor());
   }
 
   return (
@@ -70,11 +81,7 @@ function PageMix() {
               <div className={styles.buttonBG2}>
                 <ButtonBase
                   className={styles.base}
-                  onClick={() => {
-                    setChoice0(randomColor());
-                    setChoice1(randomColor());
-                    setChoice2(randomColor());
-                  }}
+                  onClick={playAgain}
                 >
                   <p className={styles.text}>Play Again</p>
                 </ButtonBase>
