@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./PageMix.module.css";
 import CurrentState from "../../components/CurrentState";
 import MixColorList from "../../components/MixColorList";
 import { ButtonBase } from "@material-ui/core";
+import { firebase } from "@firebase/app";
+import "@firebase/firestore";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -51,6 +53,13 @@ function PageMix(props) {
     setChoice1(randomColor());
     setChoice2(randomColor());
   }
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection: collection });
+    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
+  }, [mixColl]);
 
   return (
     <>

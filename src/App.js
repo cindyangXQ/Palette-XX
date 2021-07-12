@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppShell from "./components/AppShell";
 import PageLogin from "./pages/PageLogin";
 import PageMode from "./pages/PageMode";
@@ -51,7 +51,7 @@ function App() {
                 setMixColl={setMixColl}
               />
             : mode === "Profile" 
-            ? <PageProfile point={point} />
+            ? <PageProfile point={point} setPoint={setPoint} />
             : mode === "Collection" 
             ? <PageCollection 
                 collection={collection} 

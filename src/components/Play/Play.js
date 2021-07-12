@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Play.module.css";
 import Timer from "../Timer";
 import CurrentState from "../CurrentState";
 import ColorList from "../ColorList";
 import { ButtonBase } from "@material-ui/core";
+import { firebase } from "@firebase/app";
+import "@firebase/firestore";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -30,6 +32,19 @@ function Play(props) {
   const [pct2, setPct2] = useState(0);
   const [time, setTime] = useState("");
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/point").doc(uid).set({ point: point });
+  }, [point]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection:collection });
+    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
+  }, [gsColl]);
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);

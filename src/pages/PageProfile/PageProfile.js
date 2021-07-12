@@ -5,9 +5,26 @@ import {
   IfFirebaseAuthed,
   IfFirebaseUnAuthed
 } from "@react-firebase/auth";
+import { firebase } from "@firebase/app";
+import { useEffect } from "react";
+import "@firebase/firestore";
 
 function PageProfile(props) {
-  const { point } = props;
+  const { point, setPoint } = props;
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    const docRef = db.collection("/point").doc(uid);
+
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        setPoint(doc.data().point);
+      } else {
+        setPoint(500);
+      }
+    });
+  }, []);
+
   return (
     <div>
       <div className={styles.bg}></div>
