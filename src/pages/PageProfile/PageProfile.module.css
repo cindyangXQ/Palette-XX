@@ -7,14 +7,6 @@
   z-index: -10;
 }
 
-.profilePic {
-  margin: 165px auto 50px auto;
-  border-radius: 50%;
-  height: 150px;
-  width: 150px;
-  background-color: white;
-}
-
 .info {
   border-radius: 10%;
   background-color: azure;
