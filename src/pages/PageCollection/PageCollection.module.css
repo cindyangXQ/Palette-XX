@@ -15,10 +15,9 @@
 .box {
   top: 145px;
   margin: 50px 10%;
-  width: 80%;
+  max-width: 80%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
 }
 
 .display {

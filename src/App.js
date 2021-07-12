@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppShell from "./components/AppShell";
 import PageLogin from "./pages/PageLogin";
 import PageMode from "./pages/PageMode";
@@ -21,6 +21,10 @@ function App() {
   const [ collection, setCollection ] = useState([]);
   const [ mixColl, setMixColl ] = useState([]);
   const [ gsColl, setGsColl ] = useState([]);
+  const [ easyScore, setEasyScore ] = useState(-1);
+  const [ mdmScore, setMdmScore ] = useState(-1);
+  const [ dfcScore, setDfcScore ] = useState(-1);
+  const [ name, setName ] = useState("<Click to set>");
   
   return (
     <div className="App">
@@ -34,32 +38,33 @@ function App() {
             : mode === "Guess" 
             ? <PageGuessColor 
                 level={level} 
-                point={point} 
-                setPoint={setPoint}
-                toolsUsed={toolsUsed} 
-                setToolsUsed={setToolsUsed}
-                collection={collection} 
-                setCollection={setCollection} 
-                gsColl={gsColl} 
-                setGsColl={setGsColl} 
+                point={point} setPoint={setPoint}
+                toolsUsed={toolsUsed} setToolsUsed={setToolsUsed}
+                collection={collection} setCollection={setCollection} 
+                gsColl={gsColl} setGsColl={setGsColl} 
+                easyScore={easyScore} setEasyScore={setEasyScore} 
+                mdmScore={mdmScore} setMdmScore={setMdmScore} 
+                dfcScore={dfcScore} setDfcScore={setDfcScore} 
               />
             : mode === "Mix" 
             ? <PageMix 
-                collection={collection}
-                setCollection={setCollection} 
-                mixColl={mixColl} 
-                setMixColl={setMixColl}
+                collection={collection} setCollection={setCollection} 
+                mixColl={mixColl} setMixColl={setMixColl}
               />
             : mode === "Profile" 
-            ? <PageProfile point={point} setPoint={setPoint} />
+            ? <PageProfile 
+                point={point} setPoint={setPoint} 
+                toolsUsed={toolsUsed} 
+                easyScore={easyScore} 
+                mdmScore={mdmScore} 
+                dfcScore={dfcScore} 
+                name={name} setName={setName} 
+              />
             : mode === "Collection" 
             ? <PageCollection 
-                collection={collection} 
-                setCollection={setCollection} 
-                mixColl={mixColl} 
-                setMixColl={setMixColl} 
-                gsColl={gsColl} 
-                setGsColl={setGsColl} 
+                collection={collection} setCollection={setCollection} 
+                mixColl={mixColl} setMixColl={setMixColl} 
+                gsColl={gsColl} setGsColl={setGsColl} 
               /> 
             : <></>
           }

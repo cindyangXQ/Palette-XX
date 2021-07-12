@@ -25,7 +25,8 @@ function Play(props) {
         answerPct0, answerPct1, answerPct2,
         choice0, choice1, choice2, 
         collection, setCollection, 
-        gsColl, setGsColl } = props;
+        gsColl, setGsColl, 
+        highScore, setHighScore } = props;
   const [tip, setTip] = useState(0);
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
@@ -44,7 +45,7 @@ function Play(props) {
     const db = firebase.firestore();
     db.collection("/collection").doc(uid).set({ collection:collection });
     db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
-  }, [gsColl]);
+  }, [gsColl, collection]);
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
@@ -71,6 +72,7 @@ function Play(props) {
       setPoint(prevstate => prevstate + 1);
       setCollection([...collection, targetColor]);
       setGsColl([...gsColl, targetColor]);
+      if(time < highScore || highScore < 0) setHighScore(time);
     } else{
       setResult("failed");
       document.getElementById("failed").style.display="block";
