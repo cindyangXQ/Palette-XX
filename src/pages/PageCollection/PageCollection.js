@@ -55,13 +55,13 @@ function PageCollection(props) {
         </Button>
         { split ? (
           <div>
-            <p>Guess Achievements</p>
+            <p  className={styles.achieve}>Guess Achievements</p>
             <div className={styles.box}>
               {gsColl.map(collect => (
                 <div className={styles.display} style={collect.cssString}></div>
               ))}
             </div>
-            <p>Mix Achievements</p>
+            <p className={styles.achieve}>Mix Achievements</p>
             <div className={styles.box}>
               {mixColl.map(collect => (
                 <div className={styles.display} style={collect.cssString}></div>

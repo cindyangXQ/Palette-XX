@@ -51,6 +51,7 @@ function PageProfile(props) {
               <h4 className={styles.info}>Easy level highest score: {easyScore >= 0 ? easyScore + "s" : "You haven't tried this level. "}</h4>
               <h4 className={styles.info}>Medium level highest score: {mdmScore >= 0 ? mdmScore + "s": "You haven't tried this level. "}</h4>
               <h4 className={styles.info}>Difficult level highest score: {dfcScore>= 0 ? dfcScore + "s": "You haven't tried this level. "}</h4>
+              <br/><br/><br/>
             </div>
           )}
       </IfFirebaseAuthed> 

@@ -14,7 +14,7 @@
 
 .box {
   top: 145px;
-  margin: 50px 10%;
+  margin: 30px 10%;
   max-width: 80%;
   display: flex;
   flex-flow: row wrap;
@@ -31,4 +31,11 @@
 .button {
   float: right;
   margin: 30px;
+}
+
+.achieve{
+  margin-left:20px;
+  font-size:20px;
+  color:#3d3931;
+  font-family: "Quicksand", sans-serif;
 }

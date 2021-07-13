@@ -9,9 +9,10 @@
 
 .info {
   border-radius: 10%;
-  background-color: azure;
+  background-color: #91AA9D;
   text-align: center;
   margin-left: 20%;
   margin-right: 20%;
   font-size: 20px;
+  color:#3d3931;
 }
