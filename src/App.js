@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppShell from "./components/AppShell";
 import PageLogin from "./pages/PageLogin";
 import PageMode from "./pages/PageMode";
@@ -12,6 +12,8 @@ import {
   IfFirebaseAuthed,
   IfFirebaseUnAuthed
 } from "@react-firebase/auth";
+import { firebase } from "@firebase/app";
+import "@firebase/firestore";
 
 function App() {
   const [ mode, setMode ] = useState("Mode");
@@ -25,6 +27,40 @@ function App() {
   const [ mdmScore, setMdmScore ] = useState(-1);
   const [ dfcScore, setDfcScore ] = useState(-1);
   const [ name, setName ] = useState("<Click to set>");
+
+  
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    const easyRef = db.collection("/easyScore").doc(uid);
+    const mdmRef = db.collection("/mdmScore").doc(uid);
+    const dfcRef = db.collection("/dfcScore").doc(uid);
+
+    easyRef.get().then((doc) => {
+      if (doc.exists) {
+        setEasyScore(doc.data().easyScore);
+      } else {
+        setEasyScore(-1);
+      }
+    });
+
+    mdmRef.get().then((doc) => {
+      if (doc.exists) {
+        setMdmScore(doc.data().mdmScore);
+      } else {
+        setMdmScore(-1);
+      }
+    });
+
+    dfcRef.get().then((doc) => {
+      if (doc.exists) {
+        setDfcScore(doc.data().dfcScore);
+      } else {
+        setDfcScore(-1);
+      }
+    });
+  }, []);
+
   
   return (
     <div className="App">

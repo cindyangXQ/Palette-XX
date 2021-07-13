@@ -9,10 +9,11 @@ const Timer = (props) => {
   useEffect(() => {
     if (result === "") {
     } else {
-      setTime(document.getElementById("time").innerText);
+      setTime(seconds);
       setIsActive(false);
     }
   }, [result, setTime]);
+
   useEffect(() => {
     let interval = null;
     if (isActive) {

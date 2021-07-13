@@ -24,9 +24,13 @@ function PageProfile(props) {
     });
   }, [setPoint]);
 
-  function changeName() {
-    setName(prompt("What's your name?"));
-  }
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/easyScore").doc(uid).set({ easyScore: easyScore });
+    db.collection("/mdmScore").doc(uid).set({ mdmScore: mdmScore });
+    db.collection("/dfcScore").doc(uid).set({ dfcScore: dfcScore });
+  }, [easyScore, mdmScore, dfcScore]);
 
   return (
     <div>
@@ -40,13 +44,13 @@ function PageProfile(props) {
                 alt="Remy Sharp"
                 src={user.photoURL}
               />
-              <h4 className={styles.info} onClick={changeName}>Your name: {name}</h4>
-              <h4 className={styles.info}>Your email address: </h4>
+              <h4 className={styles.info}>Your name: {user.displayName}</h4>
+              <h4 className={styles.info}>Your email address: {user.email}</h4>
               <h4 className={styles.info}>Your points: {point}</h4>
               <h4 className={styles.info}>Your tools: {parseInt(point/5) - toolsUsed}</h4>
-              <h4 className={styles.info}>Easy level highest score: {easyScore >= 0 ? easyScore : "You haven't tried this level. "}</h4>
-              <h4 className={styles.info}>Medium level highest score: {mdmScore >= 0 ? mdmScore : "You haven't tried this level. "}</h4>
-              <h4 className={styles.info}>Difficult level highest score: {dfcScore>= 0 ? dfcScore : "You haven't tried this level. "}</h4>
+              <h4 className={styles.info}>Easy level highest score: {easyScore >= 0 ? easyScore + "s" : "You haven't tried this level. "}</h4>
+              <h4 className={styles.info}>Medium level highest score: {mdmScore >= 0 ? mdmScore + "s": "You haven't tried this level. "}</h4>
+              <h4 className={styles.info}>Difficult level highest score: {dfcScore>= 0 ? dfcScore + "s": "You haven't tried this level. "}</h4>
             </div>
           )}
       </IfFirebaseAuthed> 

@@ -31,7 +31,7 @@ function Play(props) {
   const [pct0, setPct0] = useState(0);
   const [pct1, setPct1] = useState(0);
   const [pct2, setPct2] = useState(0);
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(0);
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -46,6 +46,12 @@ function Play(props) {
     db.collection("/collection").doc(uid).set({ collection:collection });
     db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
   }, [gsColl, collection]);
+
+  useEffect(()=>{
+    if(result==="success"&&(time<highScore || highScore<0)){
+      setHighScore(time);
+    }
+  }, [time]);
 
   function generateMix() {
     var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
@@ -72,7 +78,6 @@ function Play(props) {
       setPoint(prevstate => prevstate + 1);
       setCollection([...collection, targetColor]);
       setGsColl([...gsColl, targetColor]);
-      if(time < highScore || highScore < 0) setHighScore(time);
     } else{
       setResult("failed");
       document.getElementById("failed").style.display="block";
@@ -143,7 +148,7 @@ function Play(props) {
       <div id="mask" className={styles.mask} style={{display:"none"}} />
       <div id="success" className={styles.success} style={{display:"none"}}>⭐SUCCESS!⭐</div>
       <div id="failed" className={styles.failed} style={{display:"none"}}>YOU FAILED</div>
-      <div id="score" className={styles.score} style={{display:"none"}}>Your Score: {time}</div>
+      <div id="score" className={styles.score} style={{display:"none"}}>Your Score: {Math.floor(time / 60)}min {time % 60}s </div>
       <div id="buttons"
         className={styles.buttons} 
         style={{display:"none"}}
