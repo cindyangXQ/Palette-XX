@@ -63,10 +63,12 @@ const PrettoSlider = withStyles({
 
 export default function CustomizedSlider(props) {
   const classes = useStyles();
-  const { setPct } = props;
+  const { choices, setChoices, index } = props;
 
   const handleSliderChange = (event, value) => {
-    setPct(value/100);
+    var newChoices = choices.concat([]);
+    newChoices[index].pct = value/100;
+    setChoices(newChoices);
   };
 
   return (

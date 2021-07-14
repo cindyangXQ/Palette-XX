@@ -41,7 +41,7 @@ function PageCollection(props) {
         setMixColl([]);
       }
     });
-  }, []);
+  }, [setCollection, setGsColl, setMixColl]);
 
   return (
     <div>
