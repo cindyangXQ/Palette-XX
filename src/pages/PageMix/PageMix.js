@@ -26,17 +26,21 @@ function randomColor() {
 
 function PageMix(props) {
   const { collection, setCollection, mixColl, setMixColl } = props;
-  const [choice0, setChoice0] = useState(randomColor());
-  const [choice1, setChoice1] = useState(randomColor());
-  const [choice2, setChoice2] = useState(randomColor());
-  const [pct0, setPct0] = useState(0);
-  const [pct1, setPct1] = useState(0);
-  const [pct2, setPct2] = useState(0);
+  const [choices, setChoices] = useState([
+                    {color: randomColor(), pct: 0}, 
+                    {color: randomColor(), pct: 0}, 
+                    {color: randomColor(), pct: 0}]);
 
   function generateMix() {
-    var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
-    var green = Math.floor(pct0 * choice0.g + pct1 * choice1.g + pct2 * choice2.g);
-    var blue = Math.floor(pct0 * choice0.b + pct1 * choice1.b + pct2 * choice2.b);
+    var i, red = 0, green = 0, blue = 0;
+    for(i = 0; i < choices.length; i++) {
+      red += choices[i].color.r * choices[i].pct;
+      green += choices[i].color.g * choices[i].pct;
+      blue += choices[i].color.b * choices[i].pct;
+    }
+    red = Math.floor(red);
+    green = Math.floor(green);
+    blue = Math.floor(blue);
     return cusColor(red, green, blue);
   }
 
@@ -49,9 +53,15 @@ function PageMix(props) {
   }
 
   function playAgain() {
-    setChoice0(randomColor());
-    setChoice1(randomColor());
-    setChoice2(randomColor());
+    var newChoices = [];
+    for(var i = 0; i < choices.length; i++) {
+      newChoices.push({color: randomColor(), pct: choices[i].pct});
+    }
+    setChoices(newChoices);
+  }
+
+  function addChoice() {
+    setChoices([...choices, {color: randomColor(), pct: 0}]);
   }
 
   useEffect(() => {
@@ -66,20 +76,12 @@ function PageMix(props) {
       <div className={styles.bg}></div>
       <div className={styles.container}>
         <div className={styles.box}>
-          <CurrentState 
-            red={generateMix().r} 
-            green={generateMix().g} 
-            blue={generateMix().b} 
-          />
+          <CurrentState current={generateMix()} />
           <div className={styles.box2}>
             <h1 className={styles.title1}>MIX!</h1>
-            <MixColorList 
-              setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
-              choice0={choice0} choice1={choice1} choice2={choice2}
-              setChoice0={setChoice0} setChoice1={setChoice1} setChoice2={setChoice2}
-            />
+            <MixColorList choices={choices} setChoices={setChoices} />
             <div className={styles.containerRow}>
-              <div className={styles.buttonBG1}>
+              <div className={styles.buttonBG}>
                 <ButtonBase
                   className={styles.base}
                   onClick={handleSubmit} 
@@ -87,12 +89,20 @@ function PageMix(props) {
                   <p className={styles.text}>Submit</p>
                 </ButtonBase>
               </div>
-              <div className={styles.buttonBG2}>
+              <div className={styles.buttonBG}>
                 <ButtonBase
                   className={styles.base}
                   onClick={playAgain}
                 >
                   <p className={styles.text}>Play Again</p>
+                </ButtonBase>
+              </div>
+              <div className={styles.buttonBG}>
+                <ButtonBase
+                  className={styles.base}
+                  onClick={addChoice}
+                >
+                  <p className={styles.text}>Add Choice</p>
                 </ButtonBase>
               </div>
             </div>

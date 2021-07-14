@@ -19,7 +19,7 @@ function cusColor(red, green, blue) {
 }
 
 function FormDialog(props) {
-  const {setChoice} = props;
+  const { choices, setChoices, index } = props;
 
   const [open, setOpen] = useState(false);
   const [r, setR] = useState(0);
@@ -35,7 +35,9 @@ function FormDialog(props) {
   };
 
   const handleConfirm = () => {
-    setChoice(cusColor(r, g, b));
+    var newChoices = choices.concat([]);
+    newChoices[index].color = cusColor(r, g, b);
+    setChoices(newChoices);
     setOpen(false);
   };
 
