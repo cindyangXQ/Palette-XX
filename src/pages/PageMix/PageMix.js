@@ -79,7 +79,9 @@ function PageMix(props) {
           <CurrentState current={generateMix()} />
           <div className={styles.box2}>
             <h1 className={styles.title1}>MIX!</h1>
-            <MixColorList choices={choices} setChoices={setChoices} />
+            <div className={styles.colorList}>
+              <MixColorList choices={choices} setChoices={setChoices} />
+            </div>
             <div className={styles.containerRow}>
               <div className={styles.buttonBG}>
                 <ButtonBase

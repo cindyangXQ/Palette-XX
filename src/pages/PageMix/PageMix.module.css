@@ -29,16 +29,25 @@
 }
 
 .box2 {
-  height: 70%;
   width: 100%;
-  margin-top: 10%;
-  display: grid;
-  grid-template-rows: 20% 60% 7%;
-  justify-content: space-around;
-  justify-items: center;
+  margin-top: 89px;
+}
+
+.colorList {
+  position: relative;
+  width: 650px;
+  left: 50%;
+  margin-left: -325px;
+  margin-bottom: 50px;
 }
 
 .containerRow {
+  position: relative;
+  height: 43px;
+  width: 780px;
+  left: 50%;
+  margin-left: -390px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
 }
