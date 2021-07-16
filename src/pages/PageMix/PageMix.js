@@ -47,8 +47,8 @@ function PageMix(props) {
   function handleSubmit() {
     alert("Added to Collection!");
     var c = generateMix();
+    setMixColl([...mixColl, collection.length]);
     setCollection([...collection, c]);
-    setMixColl([...mixColl, c]);
     playAgain();
   }
 

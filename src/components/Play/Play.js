@@ -80,8 +80,8 @@ function Play(props) {
       document.getElementById("success").style.display="block";
       document.getElementById("score").style.display="block";
       setPoint(prevstate => prevstate + 1);
+      setGsColl([...gsColl, collection.length]);
       setCollection([...collection, targetColor]);
-      setGsColl([...gsColl, targetColor]);
     } else{
       setResult("failed");
       document.getElementById("failed").style.display="block";

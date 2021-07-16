@@ -43,25 +43,27 @@ function PageCollection(props) {
     });
   }, [setCollection, setGsColl, setMixColl]);
 
-  function delGs(index, collect) {
-    var newGsColl = gsColl.slice(0, index).concat(gsColl.slice(index+1));
+  function delGs(index, position) {
+    var newGsColl = gsColl.slice(0, index).concat(gsColl.slice(index+1).map(x => x-1));
     setGsColl(newGsColl);
-    var i = collection.indexOf(collect);
-    var newColl = collection.slice(0, i).concat(collection.slice(i+1));
+    var newColl = collection.slice(0, position).concat(collection.slice(position+1));
     setCollection(newColl);
   }
 
-  function delMix(index, collect) {
-    var newMixColl = mixColl.slice(0, index).concat(mixColl.slice(index+1));
+  function delMix(index, position) {
+    var newMixColl = mixColl.slice(0, index).concat(mixColl.slice(index+1).map(x => x-1));
     setMixColl(newMixColl);
-    var i = collection.indexOf(collect);
-    var newColl = collection.slice(0, i).concat(collection.slice(i+1));
+    var newColl = collection.slice(0, position).concat(collection.slice(position+1));
     setCollection(newColl);
   }
 
-  function delColl(index, collect) {
-    var newColl = collection.slice(0, index).concat(collection.slice(index+1));
-    setCollection(newColl);
+  function delColl(index) {
+    var temp = gsColl.indexOf(index);
+    if(temp >= 0) {
+      return delGs(temp, index);
+    } else {
+      return delMix(mixColl.indexOf(index), index);
+    }
   }
 
   return (
@@ -78,19 +80,18 @@ function PageCollection(props) {
           <div>
             <p  className={styles.achieve}>Guess Achievements</p>
             <div className={styles.box}>
-              {gsColl.map((collect, index) => (
-                <div className={styles.display} style={collect.cssString}>
-                  <button onClick={() => delGs(index, collect)}>delete</button>
+              {gsColl.map((position, index) => (
+                <div className={styles.display} style={collection[position].cssString}>
+                  <button onClick={() => delGs(index, position)}>delete</button>
                 </div>
               ))}
             </div>
             <p className={styles.achieve}>Mix Achievements</p>
             <div className={styles.box}>
-              {mixColl.map((collect, index) => (
-                <div className={styles.display} style={collect.cssString}>
-                  <button 
-                    type = "input"
-                    onClick={() => delMix(index, collect)}
+              {mixColl.map((position, index) => (
+                <div className={styles.display} style={collection[position].cssString}>
+                  <button type = "input"
+                    onClick={() => delMix(index, position)}
                   >
                     delete
                   </button>
@@ -105,7 +106,7 @@ function PageCollection(props) {
                 <div className={styles.display} style={collect.cssString}>
                   <button 
                     type = "input"
-                    onClick={() => delColl(index, collect)}
+                    onClick={() => delColl(index)}
                   >
                     delete
                   </button>
