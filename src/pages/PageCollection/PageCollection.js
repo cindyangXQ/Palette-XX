@@ -43,6 +43,27 @@ function PageCollection(props) {
     });
   }, [setCollection, setGsColl, setMixColl]);
 
+  function delGs(index, collect) {
+    var newGsColl = gsColl.slice(0, index).concat(gsColl.slice(index+1));
+    setGsColl(newGsColl);
+    var i = collection.indexOf(collect);
+    var newColl = collection.slice(0, i).concat(collection.slice(i+1));
+    setCollection(newColl);
+  }
+
+  function delMix(index, collect) {
+    var newMixColl = mixColl.slice(0, index).concat(mixColl.slice(index+1));
+    setMixColl(newMixColl);
+    var i = collection.indexOf(collect);
+    var newColl = collection.slice(0, i).concat(collection.slice(i+1));
+    setCollection(newColl);
+  }
+
+  function delColl(index, collect) {
+    var newColl = collection.slice(0, index).concat(collection.slice(index+1));
+    setCollection(newColl);
+  }
+
   return (
     <div>
       <div className={styles.bg}></div>
@@ -57,22 +78,38 @@ function PageCollection(props) {
           <div>
             <p  className={styles.achieve}>Guess Achievements</p>
             <div className={styles.box}>
-              {gsColl.map(collect => (
-                <div className={styles.display} style={collect.cssString}></div>
+              {gsColl.map((collect, index) => (
+                <div className={styles.display} style={collect.cssString}>
+                  <button onClick={() => delGs(index, collect)}>delete</button>
+                </div>
               ))}
             </div>
             <p className={styles.achieve}>Mix Achievements</p>
             <div className={styles.box}>
-              {mixColl.map(collect => (
-                <div className={styles.display} style={collect.cssString}></div>
+              {mixColl.map((collect, index) => (
+                <div className={styles.display} style={collect.cssString}>
+                  <button 
+                    type = "input"
+                    onClick={() => delMix(index, collect)}
+                  >
+                    delete
+                  </button>
+                </div>
               ))}
             </div>
           </div>
         ) : (
           <div>
             <div className={styles.box}>
-              {collection.map(collect => (
-                <div className={styles.display} style={collect.cssString}></div>
+              {collection.map((collect, index) => (
+                <div className={styles.display} style={collect.cssString}>
+                  <button 
+                    type = "input"
+                    onClick={() => delColl(index, collect)}
+                  >
+                    delete
+                  </button>
+                </div>
               ))}
             </div>
           </div>

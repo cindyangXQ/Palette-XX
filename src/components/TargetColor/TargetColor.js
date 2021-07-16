@@ -30,8 +30,7 @@ function generateMix(c0, c1, c2, p0, p1, p2) {
 function TargetColor(props) {
   const [check, setCheck] = useState(true);
   const { level, setShow, setTargetColor, 
-          setChoice0, setChoice1, setChoice2, 
-          setPct0, setPct1, setPct2 } = props;
+          setChoices, setPcts } = props;
 
   function setupAllColors() {
     var flag = true;
@@ -55,12 +54,8 @@ function TargetColor(props) {
       if(temp.r < 256 && temp.g < 256 && temp.b < 256)
         flag = false;
     }
-    setChoice0(c0);
-    setChoice1(c1);
-    setChoice2(c2);
-    setPct0(p0);
-    setPct1(p1);
-    setPct2(p2);
+    setChoices([{color: c0, pct: 0}, {color: c1, pct: 0}, {color: c2, pct: 0}])
+    setPcts([p0, p1, p2]);
     setTargetColor(temp);
     return temp;
   }

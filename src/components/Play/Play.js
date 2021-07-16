@@ -19,18 +19,14 @@ function cusColor(red, green, blue) {
 }
 
 function Play(props) {
-  const { level, setShow, targetColor, 
+  const { level, setShow, targetColor, answerPcts, 
         point, setPoint, 
         toolsUsed, setToolsUsed, 
-        answerPct0, answerPct1, answerPct2,
-        choice0, choice1, choice2, 
+        choices, setChoices,  
         collection, setCollection, 
         gsColl, setGsColl, 
         highScore, setHighScore } = props;
   const [tip, setTip] = useState(0);
-  const [pct0, setPct0] = useState(0);
-  const [pct1, setPct1] = useState(0);
-  const [pct2, setPct2] = useState(0);
   const [time, setTime] = useState(0);
   const [result, setResult] = useState("");
 
@@ -51,21 +47,29 @@ function Play(props) {
     if(result==="success"&&(time<highScore || highScore<0)){
       setHighScore(time);
     }
-  }, [time]);
+  }, [time, highScore, setHighScore, result]);
 
   function generateMix() {
-    var red = Math.floor(pct0 * choice0.r + pct1 * choice1.r + pct2 * choice2.r);
-    var green = Math.floor(pct0 * choice0.g + pct1 * choice1.g + pct2 * choice2.g);
-    var blue = Math.floor(pct0 * choice0.b + pct1 * choice1.b + pct2 * choice2.b);
+    var i, red = 0, green = 0, blue = 0;
+    for(i = 0; i < choices.length; i++) {
+      red += choices[i].color.r * choices[i].pct;
+      green += choices[i].color.g * choices[i].pct;
+      blue += choices[i].color.b * choices[i].pct;
+    }
+    red = Math.floor(red);
+    green = Math.floor(green);
+    blue = Math.floor(blue);
     return cusColor(red, green, blue);
   }
 
   function checkAnswer() {
-    if(Math.abs(pct0 - answerPct0) < 0.08 &&
-        Math.abs(pct1 - answerPct1) < 0.08 &&
-        Math.abs(pct2 - answerPct2) < 0.08) 
-    return true;
-    else return false;
+    var res = true;
+    for(var i = 0; i < choices.length; i++) {
+      if(Math.abs(choices[i].pct - answerPcts[i]) >= 0.08) {
+        res = false;
+      }
+    }
+    return res;
   }
 
   function handleResult() {
@@ -92,11 +96,11 @@ function Play(props) {
       alert("I have told you all!");
     } else {
       if(tip === 0)
-        alert("Percentage of the first color is " + Math.round(answerPct0*100) + ".");
+        alert("Percentage of the first color is " + Math.round(answerPcts[0]*100) + ".");
       else if(tip === 1)
-        alert("Percentage of the second color is " + Math.round(answerPct1*100) + ".");
+        alert("Percentage of the second color is " + Math.round(answerPcts[1]*100) + ".");
       else //if(tip === 2)
-        alert("Percentage of the third color is " + Math.round(answerPct2*100) + ".");
+        alert("Percentage of the third color is " + Math.round(answerPcts[2]*100) + ".");
       setTip(prevstate => prevstate + 1);
       setToolsUsed(prevstate => prevstate + 1);
     }
@@ -108,11 +112,7 @@ function Play(props) {
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
       </style>
       <div className={styles.box}>
-        <CurrentState 
-          red={generateMix().r} 
-          green={generateMix().g} 
-          blue={generateMix().b} 
-        />
+        <CurrentState current={generateMix()} />
         <div className={styles.box2}>
           <Timer 
             level={level}
@@ -120,10 +120,7 @@ function Play(props) {
             setTime={setTime} 
             result={result} 
           />
-          <ColorList 
-            setPct0={setPct0} setPct1={setPct1} setPct2={setPct2} 
-            choice0={choice0} choice1={choice1} choice2={choice2}
-          />
+          <ColorList choices={choices} setChoices={setChoices} />
           <div className={styles.containerRow}>
             <div className={styles.buttonBG1}>
               <ButtonBase
