@@ -36,18 +36,11 @@ function Play(props) {
     db.collection("/point").doc(uid).set({ point: point });
   }, [point]);
 
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/collection").doc(uid).set({ collection:collection });
-    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
-  }, [gsColl, collection]);
-
   useEffect(()=>{
     if(result==="success"&&(time<highScore || highScore<0)){
       setHighScore(time);
     }
-  }, [time, highScore, setHighScore, result]);
+  }, [time]);
 
   function generateMix() {
     var i, red = 0, green = 0, blue = 0;

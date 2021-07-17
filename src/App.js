@@ -89,7 +89,7 @@ function App() {
             : mode === "Profile" 
             ? <PageProfile 
                 point={point} setPoint={setPoint} 
-                toolsUsed={toolsUsed} 
+                toolsUsed={toolsUsed} setToolsUsed={setToolsUsed}
                 easyScore={easyScore} 
                 mdmScore={mdmScore} 
                 dfcScore={dfcScore} 

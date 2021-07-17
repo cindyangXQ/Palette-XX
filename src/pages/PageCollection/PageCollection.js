@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 import styles from "./PageCollection.module.css";
 import { firebase } from "@firebase/app";
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import "@firebase/firestore";
 
 
@@ -10,6 +11,20 @@ function PageCollection(props) {
           mixColl, setMixColl, 
           gsColl, setGsColl } = props;
   const [ split, setSplit ] = useState(false);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection: collection });
+    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
+  }, [mixColl]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection:collection });
+    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
+  }, [gsColl]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -82,7 +97,10 @@ function PageCollection(props) {
             <div className={styles.box}>
               {gsColl.map((position, index) => (
                 <div className={styles.display} style={collection[position].cssString}>
-                  <button onClick={() => delGs(index, position)}>delete</button>
+                  <HighlightOffIcon 
+                   className={styles.delete} onClick={() => delGs(index, position)}>
+                    delete
+                  </HighlightOffIcon>
                 </div>
               ))}
             </div>
@@ -90,11 +108,12 @@ function PageCollection(props) {
             <div className={styles.box}>
               {mixColl.map((position, index) => (
                 <div className={styles.display} style={collection[position].cssString}>
-                  <button type = "input"
+                  <HighlightOffIcon type = "input"
+                    className={styles.delete}
                     onClick={() => delMix(index, position)}
                   >
                     delete
-                  </button>
+                  </HighlightOffIcon>
                 </div>
               ))}
             </div>
@@ -104,12 +123,13 @@ function PageCollection(props) {
             <div className={styles.box}>
               {collection.map((collect, index) => (
                 <div className={styles.display} style={collect.cssString}>
-                  <button 
+                  <HighlightOffIcon
+                    className={styles.delete}
                     type = "input"
                     onClick={() => delColl(index)}
                   >
                     delete
-                  </button>
+                  </HighlightOffIcon>
                 </div>
               ))}
             </div>

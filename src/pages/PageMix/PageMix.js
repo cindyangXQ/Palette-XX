@@ -64,13 +64,6 @@ function PageMix(props) {
     setChoices([...choices, {color: randomColor(), pct: 0}]);
   }
 
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/collection").doc(uid).set({ collection: collection });
-    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
-  }, [mixColl, collection]);
-
   return (
     <>
       <div className={styles.bg}></div>

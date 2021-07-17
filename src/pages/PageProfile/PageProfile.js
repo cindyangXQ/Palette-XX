@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import "@firebase/firestore";
 
 function PageProfile(props) {
-  const { point, setPoint, toolsUsed, 
+  const { point, setPoint, toolsUsed, setToolsUsed,
           easyScore, mdmScore, dfcScore, 
           name, setName } = props;
 
@@ -31,6 +31,26 @@ function PageProfile(props) {
     db.collection("/mdmScore").doc(uid).set({ mdmScore: mdmScore });
     db.collection("/dfcScore").doc(uid).set({ dfcScore: dfcScore });
   }, [easyScore, mdmScore, dfcScore]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/toolsUsed").doc(uid).set({ toolsUsed:toolsUsed });
+  }, [toolsUsed]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    const docRef = db.collection("/toolsUsed").doc(uid);
+
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        setToolsUsed(doc.data().toolsUsed);
+      } else {
+        setToolsUsed(0);
+      }
+    });
+  }, [setPoint]);
 
   return (
     <div>
