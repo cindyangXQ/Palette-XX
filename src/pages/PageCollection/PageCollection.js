@@ -3,6 +3,8 @@ import { Button } from "@material-ui/core";
 import styles from "./PageCollection.module.css";
 import { firebase } from "@firebase/app";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
+import { Menu, MenuItem } from '@material-ui/core';
 import "@firebase/firestore";
 
 
@@ -11,6 +13,9 @@ function PageCollection(props) {
           mixColl, setMixColl, 
           gsColl, setGsColl } = props;
   const [ split, setSplit ] = useState(false);
+  const [anchor1, setAnchor1] = useState(null);
+  const [anchor2, setAnchor2] = useState(null);
+  const [anchor3, setAnchor3] = useState(null);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -71,35 +76,90 @@ function PageCollection(props) {
     <div>
       <div className={styles.bg}></div>
       <div className={styles.container}>
-        <Button 
-          className={styles.button} 
+        <HorizontalSplitIcon
+          style={{fontSize: 50}}
+          className={styles.switch} 
           onClick={() => setSplit(!split)}
-        >
-          switch
-        </Button>
+        />
         { split ? (
           <div>
-            <p  className={styles.achieve}>Guess Achievements</p>
+            <p className={styles.achieve}>Guess Achievements</p>
             <div className={styles.box}>
               {gsColl.map((position, index) => (
-                <div className={styles.display} style={collection[position].cssString}>
-                  <HighlightOffIcon type= "input"
-                   className={styles.delete} onClick={() => delGs(index, position)}>
+                <div>
+                <div 
+                  className={styles.display} 
+                  style={collection[position].cssString}
+                  onClick={(event) => setAnchor1(event.currentTarget)}
+                >
+                  <HighlightOffIcon 
+                    type= "input" 
+                    className={styles.delete} 
+                    onClick={() => delGs(index, position)} 
+                  >
                     delete
                   </HighlightOffIcon>
+                </div>
+                <Menu
+                  elevation={0} 
+                  getContentAnchorEl={null} 
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                  anchorEl={anchor1} 
+                  keepMounted
+                  open={Boolean(anchor1)}
+                  onClose={() => setAnchor1(null)}
+                >
+                  <MenuItem onClick={() => setAnchor1(null)}>
+                    {collection[position].rgb}
+                  </MenuItem>
+                </Menu>
                 </div>
               ))}
             </div>
             <p className={styles.achieve}>Mix Achievements</p>
             <div className={styles.box}>
               {mixColl.map((position, index) => (
-                <div className={styles.display} style={collection[position].cssString}>
-                  <HighlightOffIcon type = "input"
-                    className={styles.delete}
-                    onClick={() => delMix(index, position)}
+                <div>
+                <div 
+                  className={styles.display} 
+                  style={collection[position].cssString}
+                  onClick={(event) => setAnchor2(event.currentTarget)}
+                >
+                  <HighlightOffIcon 
+                    type = "input" 
+                    className={styles.delete} 
+                    onClick={() => delMix(index, position)} 
                   >
                     delete
                   </HighlightOffIcon>
+                </div>
+                <Menu
+                  elevation={0} 
+                  getContentAnchorEl={null} 
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                  anchorEl={anchor2} 
+                  keepMounted
+                  open={Boolean(anchor2)}
+                  onClose={() => setAnchor2(null)}
+                >
+                  <MenuItem onClick={() => setAnchor2(null)}>
+                    {collection[position].rgb}
+                  </MenuItem>
+                </Menu>
                 </div>
               ))}
             </div>
@@ -108,14 +168,40 @@ function PageCollection(props) {
           <div>
             <div className={styles.box}>
               {collection.map((collect, index) => (
-                <div className={styles.display} style={collect.cssString}>
-                  <HighlightOffIcon
-                    className={styles.delete}
-                    type = "input"
+                <div>
+                <div 
+                  className={styles.display}  
+                  style={collect.cssString} 
+                  onClick={(event) => setAnchor3(event.currentTarget)}
+                >
+                  <HighlightOffIcon 
+                    type = "input" 
+                    className={styles.delete} 
                     onClick={() => delColl(index)}
                   >
                     delete
                   </HighlightOffIcon>
+                </div>
+                <Menu
+                  elevation={0} 
+                  getContentAnchorEl={null} 
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                  anchorEl={anchor3} 
+                  keepMounted
+                  open={Boolean(anchor3)}
+                  onClose={() => setAnchor3(null)}
+                >
+                  <MenuItem onClick={() => setAnchor3(null)}>
+                    {collect.rgb}
+                  </MenuItem>
+                </Menu>
                 </div>
               ))}
             </div>

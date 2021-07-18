@@ -36,7 +36,7 @@ function PageMix(props) {
     const db = firebase.firestore();
     db.collection("/collection").doc(uid).set({ collection: collection });
     db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
-  }, [mixColl]);
+  }, [mixColl, collection]);
 
   function generateMix() {
     var i, red = 0, green = 0, blue = 0;

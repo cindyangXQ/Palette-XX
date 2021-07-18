@@ -8,12 +8,12 @@
 }
 
 .container {
-  margin-top: 65px;
+  position: absolute;
+  top: 65px;
   width: 100%;
 }
 
 .box {
-  top: 145px;
   margin: 30px 10%;
   max-width: 80%;
   display: flex;
@@ -28,13 +28,13 @@
   box-shadow: #31354c;
 }
 
-.button {
+.switch {
   float: right;
-  margin: 30px;
+  margin-right: 15px;
 }
 
 .achieve{
-  margin-left:20px;
+  margin: 30px 10%;
   font-size:20px;
   color:#3d3931;
   font-family: "Quicksand", sans-serif;
