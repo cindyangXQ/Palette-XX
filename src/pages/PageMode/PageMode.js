@@ -3,11 +3,18 @@ import { ButtonBase } from "@material-ui/core";
 import guessMusic from "./guess.mp4";
 import mixMusic from "./mix.mp4";
 import profilePic from "./profile.png";
+import buttonSound from "../../components/SoundEffect/button.mp3";
 
 function PageMode(props) {
   const { setMode } = props;
+  function PlaySound() {
+    var sound = document.getElementById("audio");
+    sound.volume="0.2";
+    sound.play();
+  } 
   return (
     <div>
+      <audio src={buttonSound} autostart="0" id="audio" />
       <div className={styles.bg}></div>
       <style>
         @import
@@ -17,7 +24,8 @@ function PageMode(props) {
         <ButtonBase 
           className={styles.button1Pos}
           onClick={() => {
-            setMode("Difficulty");
+            PlaySound();
+            setTimeout(()=>{setMode("Difficulty")},450);
           }}
         >
           <div className={styles.buttonBG}>
@@ -31,7 +39,8 @@ function PageMode(props) {
         <ButtonBase
           className={styles.button2Pos}
           onClick={() => {
-            setMode("Mix");
+            PlaySound();
+            setTimeout(()=>{setMode("Mix")},450);
           }}
         >
           <div className={styles.buttonBG}>
@@ -45,7 +54,8 @@ function PageMode(props) {
         <ButtonBase 
           className={styles.button3Pos}
           onClick={() => {
-            setMode("Profile");
+            PlaySound();
+            setTimeout(()=>{setMode("Profile")},450);
           }}
         >
           <div className={styles.buttonBG}>
@@ -57,7 +67,8 @@ function PageMode(props) {
         <ButtonBase 
           className={styles.button4Pos}
           onClick={() => {
-            setMode("Collection");
+            PlaySound();
+            setTimeout(()=>{setMode("Collection")},450);
           }}
         >
           <div className={styles.buttonBG}>

@@ -27,9 +27,16 @@ function randomColor() {
 function PageMix(props) {
   const { collection, setCollection, mixColl, setMixColl } = props;
   const [choices, setChoices] = useState([
-                    {color: randomColor(), pct: 0}, 
-                    {color: randomColor(), pct: 0}, 
-                    {color: randomColor(), pct: 0}]);
+    {color: randomColor(), pct: 0}, 
+    {color: randomColor(), pct: 0}, 
+    {color: randomColor(), pct: 0}]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection: collection });
+    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
+  }, [mixColl]);
 
   function generateMix() {
     var i, red = 0, green = 0, blue = 0;

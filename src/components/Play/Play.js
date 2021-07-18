@@ -30,6 +30,20 @@ function Play(props) {
   const [time, setTime] = useState(0);
   const [result, setResult] = useState("");
 
+  
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/toolsUsed").doc(uid).set({ toolsUsed:toolsUsed });
+  }, [toolsUsed]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection:collection });
+    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
+  }, [gsColl]);
+
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();

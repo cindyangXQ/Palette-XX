@@ -15,20 +15,6 @@ function PageCollection(props) {
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/collection").doc(uid).set({ collection: collection });
-    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
-  }, [mixColl]);
-
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/collection").doc(uid).set({ collection:collection });
-    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
-  }, [gsColl]);
-
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
     const collectionRef = db.collection("/collection").doc(uid);
     const gsCollRef = db.collection("/gsColl").doc(uid);
     const mixCollRef = db.collection("/mixColl").doc(uid);

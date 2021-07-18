@@ -28,38 +28,27 @@ function App() {
   const [ dfcScore, setDfcScore ] = useState(-1);
   const [ name, setName ] = useState("<Click to set>");
 
-  
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    const easyRef = db.collection("/easyScore").doc(uid);
-    const mdmRef = db.collection("/mdmScore").doc(uid);
-    const dfcRef = db.collection("/dfcScore").doc(uid);
+    db.collection("/collection").doc(uid).set({ collection: collection });
+    db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
+  }, [mixColl]);
 
-    easyRef.get().then((doc) => {
-      if (doc.exists) {
-        setEasyScore(doc.data().easyScore);
-      } else {
-        setEasyScore(-1);
-      }
-    });
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/collection").doc(uid).set({ collection:collection });
+    db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
+  }, [gsColl]);
 
-    mdmRef.get().then((doc) => {
-      if (doc.exists) {
-        setMdmScore(doc.data().mdmScore);
-      } else {
-        setMdmScore(-1);
-      }
-    });
-
-    dfcRef.get().then((doc) => {
-      if (doc.exists) {
-        setDfcScore(doc.data().dfcScore);
-      } else {
-        setDfcScore(-1);
-      }
-    });
-  }, []);
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/easyScore").doc(uid).set({ easyScore: easyScore });
+    db.collection("/mdmScore").doc(uid).set({ mdmScore: mdmScore });
+    db.collection("/dfcScore").doc(uid).set({ dfcScore: dfcScore });
+  }, [easyScore, mdmScore, dfcScore]);
   
   return (
     <div className="App">
@@ -90,9 +79,9 @@ function App() {
             ? <PageProfile 
                 point={point} setPoint={setPoint} 
                 toolsUsed={toolsUsed} setToolsUsed={setToolsUsed}
-                easyScore={easyScore} 
-                mdmScore={mdmScore} 
-                dfcScore={dfcScore} 
+                easyScore={easyScore} setEasyScore={setEasyScore} 
+                mdmScore={mdmScore}   setMdmScore={setMdmScore}
+                dfcScore={dfcScore}   setDfcScore={setDfcScore}
                 name={name} setName={setName} 
               />
             : mode === "Collection" 

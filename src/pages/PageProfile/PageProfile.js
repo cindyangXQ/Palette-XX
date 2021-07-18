@@ -7,7 +7,7 @@ import "@firebase/firestore";
 
 function PageProfile(props) {
   const { point, setPoint, toolsUsed, setToolsUsed,
-          easyScore, mdmScore, dfcScore, 
+          easyScore, setEasyScore ,mdmScore, setMdmScore, dfcScore, setDfcScore, 
           name, setName } = props;
 
   useEffect(() => {
@@ -27,16 +27,34 @@ function PageProfile(props) {
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/easyScore").doc(uid).set({ easyScore: easyScore });
-    db.collection("/mdmScore").doc(uid).set({ mdmScore: mdmScore });
-    db.collection("/dfcScore").doc(uid).set({ dfcScore: dfcScore });
-  }, [easyScore, mdmScore, dfcScore]);
+    const easyRef = db.collection("/easyScore").doc(uid);
+    const mdmRef = db.collection("/mdmScore").doc(uid);
+    const dfcRef = db.collection("/dfcScore").doc(uid);
 
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/toolsUsed").doc(uid).set({ toolsUsed:toolsUsed });
-  }, [toolsUsed]);
+    easyRef.get().then((doc) => {
+      if (doc.exists) {
+        setEasyScore(doc.data().easyScore);
+      } else {
+        setEasyScore(-1);
+      }
+    });
+
+    mdmRef.get().then((doc) => {
+      if (doc.exists) {
+        setMdmScore(doc.data().mdmScore);
+      } else {
+        setMdmScore(-1);
+      }
+    });
+
+    dfcRef.get().then((doc) => {
+      if (doc.exists) {
+        setDfcScore(doc.data().dfcScore);
+      } else {
+        setDfcScore(-1);
+      }
+    });
+  }, [setEasyScore,setMdmScore,setDfcScore]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
