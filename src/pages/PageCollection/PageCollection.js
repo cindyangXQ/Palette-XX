@@ -83,7 +83,7 @@ function PageCollection(props) {
             <div className={styles.box}>
               {gsColl.map((position, index) => (
                 <div className={styles.display} style={collection[position].cssString}>
-                  <HighlightOffIcon 
+                  <HighlightOffIcon type= "input"
                    className={styles.delete} onClick={() => delGs(index, position)}>
                     delete
                   </HighlightOffIcon>
