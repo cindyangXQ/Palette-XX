@@ -58,7 +58,7 @@ function Play(props) {
     if(result==="success"&&(time<highScore || highScore<0)){
       setHighScore(time);
     }
-  }, [time, result, highScore, setHighScore]);
+  }, [time]);
 
   function generateMix() {
     var i, red = 0, green = 0, blue = 0;

@@ -5,6 +5,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
 import { ButtonBase, Menu, MenuItem } from '@material-ui/core';
 import "@firebase/firestore";
+import butt from "../../components/SoundEffect/barbutton.mp3";
 
 function rgbToHsl(color){
   var r = color.r/255, g = color.g/255, b = color.b/255;
@@ -92,15 +93,24 @@ function PageCollection(props) {
     }
   }
 
+  function ButtSound() {
+    var sound = document.getElementById("butt");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
   return (
     <div>
+      <audio src={butt} id="butt" autostart="0"/>
       <div className={styles.bg}></div>
       <div className={styles.container}>
         <div className={styles.buttonBG}>
           <ButtonBase className={styles.base}>
             <HorizontalSplitIcon
               style={{fontSize: 50}}
-              onClick={() => setSplit(!split)}
+              onClick={() =>{ 
+                ButtSound();
+                setSplit(!split)}}
             />
           </ButtonBase>
         </div>
@@ -152,7 +162,9 @@ function PageCollection(props) {
                   <HighlightOffIcon 
                     type= "input" 
                     className={styles.delete} 
-                    onClick={() => delGs(index, position)} 
+                    onClick={() => {
+                      ButtSound();
+                      delGs(index, position);}} 
                   >
                     delete
                   </HighlightOffIcon>
@@ -173,7 +185,9 @@ function PageCollection(props) {
                   <HighlightOffIcon 
                     type = "input" 
                     className={styles.delete} 
-                    onClick={() => delMix(index, position)} 
+                    onClick={() => {
+                      ButtSound();
+                      delMix(index, position);}} 
                   >
                     delete
                   </HighlightOffIcon>
