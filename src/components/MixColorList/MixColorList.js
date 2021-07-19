@@ -2,6 +2,7 @@ import styles from "./MixColorList.module.css";
 import CustomizeSlider from "../CustomizeSlider";
 import FormDialog from "../FormDialog";
 import { ButtonBase } from "@material-ui/core";
+import butt from "../SoundEffect/barbutton.mp3";
 
 function MixColorList(props) {
   const { choices, setChoices } = props;
@@ -11,8 +12,15 @@ function MixColorList(props) {
     setChoices(newChoice);
   }
 
+  function ButtSound() {
+    var sound = document.getElementById("butt");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
   return (
     <div>
+      <audio src={butt} id="butt" autostart="0"/>
       {choices.map((choice, index) => (
         <div className={styles.containerRow}>
           <div className={styles.color} style={choice.color.cssString}/>
@@ -23,7 +31,10 @@ function MixColorList(props) {
           <div className={styles.buttonBG}>
             <ButtonBase
               className={styles.base}
-              onClick={() => del(index)} 
+              onClick={() => {
+                ButtSound();
+                del(index);
+              }} 
             >
               <p className={styles.text}>Delete This Color</p>
             </ButtonBase>

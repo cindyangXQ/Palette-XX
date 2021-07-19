@@ -10,7 +10,8 @@ function ColorList(props) {
         <div className={styles.containerRow}>
           <div className={styles.color} style={choice.color.cssString}/>
           <p className={styles.style1}>0</p>
-          <CustomizeSlider choices={choices} setChoices={setChoices} index={index} />
+          <CustomizeSlider 
+           choices={choices} setChoices={setChoices} index={index} />
           <p className={styles.style2}>100%</p>
         </div>
       ))}

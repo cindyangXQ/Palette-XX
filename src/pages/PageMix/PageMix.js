@@ -5,6 +5,8 @@ import MixColorList from "../../components/MixColorList";
 import { ButtonBase } from "@material-ui/core";
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
+import butt from "../../components/SoundEffect/barbutton.mp3";
+import confirm from "../../components/SoundEffect/confirm.mp3";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -52,6 +54,7 @@ function PageMix(props) {
   }
 
   function handleSubmit() {
+    ConfirmSound();
     alert("Added to Collection!");
     var c = generateMix();
     setMixColl([...mixColl, collection.length]);
@@ -61,6 +64,7 @@ function PageMix(props) {
 
   function playAgain() {
     var newChoices = [];
+    ButtSound();
     for(var i = 0; i < choices.length; i++) {
       newChoices.push({color: randomColor(), pct: choices[i].pct});
     }
@@ -68,11 +72,27 @@ function PageMix(props) {
   }
 
   function addChoice() {
+    ButtSound();
     setChoices([...choices, {color: randomColor(), pct: 0}]);
   }
 
+  function ConfirmSound() {
+    var sound = document.getElementById("confirm");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+  function ButtSound() {
+    var sound = document.getElementById("butt");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+
   return (
     <>
+      <audio id="butt" src={butt} autostart="0" />
+      <audio id="confirm" src={confirm} autostart="0" />
       <div className={styles.bg}></div>
       <div className={styles.container}>
         <div className={styles.box}>

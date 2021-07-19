@@ -5,6 +5,7 @@ import { Button, ButtonBase,
   DialogContent, DialogContentText, DialogTitle, 
   TextField 
 } from '@material-ui/core';
+import butt from "../SoundEffect/barbutton.mp3";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -26,6 +27,7 @@ function FormDialog(props) {
   const [b, setB] = useState(0);
 
   const handleClickOpen = () => {
+    ButtSound();
     setOpen(true);
   };
 
@@ -40,8 +42,15 @@ function FormDialog(props) {
     setOpen(false);
   };
 
+  function ButtSound() {
+    var sound = document.getElementById("butt");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
   return (
     <div>
+      <audio src={butt} id="butt" autostart="0"/>
       <div className={styles.buttonBG}>
         <ButtonBase
           className={styles.base}

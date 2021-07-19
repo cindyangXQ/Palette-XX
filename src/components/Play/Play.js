@@ -6,6 +6,10 @@ import ColorList from "../ColorList";
 import { ButtonBase } from "@material-ui/core";
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
+import failAud from "../SoundEffect/fail.mp3";
+import confirmAud from "../SoundEffect/confirm.mp3";
+import successAud from "../SoundEffect/success.mp3";
+import butt from "../SoundEffect/barbutton.mp3";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -30,7 +34,6 @@ function Play(props) {
   const [time, setTime] = useState(0);
   const [result, setResult] = useState("");
 
-  
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
@@ -83,6 +86,7 @@ function Play(props) {
     document.getElementById("mask").style.display="block";
     document.getElementById("buttons").style.display="block";
     if(checkAnswer()){
+      SuccessSound();
       setResult("success");
       document.getElementById("success").style.display="block";
       document.getElementById("score").style.display="block";
@@ -90,6 +94,7 @@ function Play(props) {
       setGsColl([...gsColl, collection.length]);
       setCollection([...collection, targetColor]);
     } else{
+      FailSound();
       setResult("failed");
       document.getElementById("failed").style.display="block";
     }
@@ -97,6 +102,7 @@ function Play(props) {
 
   function tool() {
     var toolsLeft = parseInt(point/5) - toolsUsed;
+    ButtSound();
     if(toolsLeft === 0) {
       alert("You have no tools left.");
     } else if(tip === 3) {
@@ -113,8 +119,36 @@ function Play(props) {
     }
   }
 
+  function ConfirmSound() {
+    var sound = document.getElementById("confirmAud");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+  function FailSound() {
+    var sound = document.getElementById("failAud");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+  function SuccessSound() {
+    var sound = document.getElementById("successAud");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+  function ButtSound() {
+    var sound = document.getElementById("butt");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
   return (
     <div className={styles.container}>
+      <audio src={failAud} id="failAud" />
+      <audio src={successAud} id="successAud" />
+      <audio src={confirmAud} id="confirmAud" />
+      <audio src={butt} id="butt" />
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
       </style>
@@ -132,7 +166,10 @@ function Play(props) {
             <div className={styles.buttonBG1}>
               <ButtonBase
                 className={styles.base}
-                onClick={handleResult} 
+                onClick={()=>{
+                  ConfirmSound();
+                  setTimeout(()=>{
+                  handleResult()},1200);}} 
               >
                 <p className={styles.text}>Submit</p>
               </ButtonBase>
@@ -159,7 +196,10 @@ function Play(props) {
       >
         <ButtonBase
           className={styles.base}
-          onClick={() => {setShow("showTarget")}}
+          onClick={() => {
+            ButtSound();
+            setTimeout(()=>{
+            setShow("showTarget")},450)}}
         >
           <strong className={styles.text2}>Play Again</strong>
         </ButtonBase>

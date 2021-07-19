@@ -24,6 +24,14 @@
   height: 100%;
 }
 
+.confirm{
+  width:100%;
+  height:100%;
+  color:#3E606F;
+  border-color:#3E606F;
+  border-width:2px;
+}
+
 .text {
   text-align: center;
   color: azure;

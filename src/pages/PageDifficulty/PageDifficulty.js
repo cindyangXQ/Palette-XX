@@ -1,10 +1,19 @@
 import styles from "./PageDifficulty.module.css";
 import { ButtonBase } from "@material-ui/core";
+import buttonSound from "../../components/SoundEffect/button.mp3";
 
 function PageDifficulty(props) {
   const { setMode, setLevel } = props;
+
+  function PlaySound() {
+    var sound = document.getElementById("audio");
+    sound.volume="0.2 ";
+    sound.play();
+  } 
+
   return (
     <div>
+      <audio src={buttonSound} autostart="0" id="audio"/>
       <div className={styles.bg}></div>
       <style>
         @import
@@ -19,8 +28,11 @@ function PageDifficulty(props) {
           <ButtonBase 
             className={styles.base}
             onClick={() => {
+              PlaySound();
+              setTimeout(()=>{
               setLevel("Easy");
               setMode("Guess");
+              },450);
             }}
           >
             <strong className={styles.text}>Easy</strong>
@@ -31,8 +43,11 @@ function PageDifficulty(props) {
           <ButtonBase 
             className={styles.base}
             onClick={() => {
+              PlaySound();
+              setTimeout(()=>{
               setLevel("Medium");
               setMode("Guess");
+              },450);
             }}
           >
             <strong className={styles.text}>Medium</strong>
@@ -43,8 +58,11 @@ function PageDifficulty(props) {
           <ButtonBase 
             className={styles.base}
             onClick={() => {
+              PlaySound();
+              setTimeout(()=>{
               setLevel("Difficult");
               setMode("Guess");
+              },450);
             }}
           >
             <strong className={styles.text}>Difficult</strong>

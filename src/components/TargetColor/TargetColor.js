@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./TargetColor.module.css";
 import { ButtonBase, Button } from "@material-ui/core";
+import water from "../SoundEffect/waterdrop.mp3";
+import confirm from "../SoundEffect/confirm.mp3";
 
 function cusColor(red, green, blue) {
   var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
@@ -61,13 +63,28 @@ function TargetColor(props) {
   }
 
   function handleClick() {
+    WaterSound();
     setCheck(false);
     document.getElementById("text").innerHTML = "Click To Change Target Color";
     document.getElementById("bgc").style.backgroundColor = setupAllColors().rgb;
   }
 
+  function WaterSound() {
+    var sound = document.getElementById("water");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
+  function ConfirmSound() {
+    var sound = document.getElementById("confirm");
+    sound.volume="0.4";
+    sound.play();
+  } 
+
   return (
     <div>
+      <audio src={water} id="water" autostart="0" />
+      <audio src={confirm} id="confirm" autostart="0" />
       <div className={styles.tcbuttonBG} id="bgc">
         <ButtonBase 
           className={styles.base}
@@ -80,9 +97,11 @@ function TargetColor(props) {
         <Button
           variant="outlined"
           disabled={check}
-          className={styles.base}
+          className={check===true ? styles.base : styles.confirm}
           onClick={() => {
-            setShow("showPlay");
+            ConfirmSound();
+            setTimeout(()=>{
+            setShow("showPlay");},800);
           }}
         >
           CONFIRM
