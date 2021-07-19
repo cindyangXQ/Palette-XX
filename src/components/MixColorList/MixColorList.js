@@ -2,6 +2,7 @@ import styles from "./MixColorList.module.css";
 import CustomizeSlider from "../CustomizeSlider";
 import FormDialog from "../FormDialog";
 import { ButtonBase } from "@material-ui/core";
+import DeleteIcon from '@material-ui/icons/Delete';
 import butt from "../SoundEffect/barbutton.mp3";
 
 function MixColorList(props) {
@@ -36,7 +37,7 @@ function MixColorList(props) {
                 del(index);
               }} 
             >
-              <p className={styles.text}>Delete This Color</p>
+              <DeleteIcon style={{fontSize: 35}} />
             </ButtonBase>
           </div>
         </div>

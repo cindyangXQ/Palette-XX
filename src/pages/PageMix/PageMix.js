@@ -9,12 +9,13 @@ import butt from "../../components/SoundEffect/barbutton.mp3";
 import confirm from "../../components/SoundEffect/confirm.mp3";
 
 function cusColor(red, green, blue) {
-  var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
+  var rr = Math.min(255, red), gg = Math.min(255, green), bb = Math.min(255, blue);
+  var rgbstring = "rgb(" + rr + ", " + gg + ", " + bb + ")";
   return {
     rgb: rgbstring, 
-    r: red, 
-    g: green,
-    b: blue, 
+    r: rr, 
+    g: gg,
+    b: bb, 
     cssString: { backgroundColor: rgbstring }
   };
 }

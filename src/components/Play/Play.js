@@ -12,12 +12,13 @@ import successAud from "../SoundEffect/success.mp3";
 import butt from "../SoundEffect/barbutton.mp3";
 
 function cusColor(red, green, blue) {
-  var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
+  var rr = Math.min(255, red), gg = Math.min(255, green), bb = Math.min(255, blue);
+  var rgbstring = "rgb(" + rr + ", " + gg + ", " + bb + ")";
   return {
     rgb: rgbstring, 
-    r: red, 
-    g: green,
-    b: blue, 
+    r: rr, 
+    g: gg,
+    b: bb, 
     cssString: { backgroundColor: rgbstring }
   };
 }
@@ -45,7 +46,7 @@ function Play(props) {
     const db = firebase.firestore();
     db.collection("/collection").doc(uid).set({ collection:collection });
     db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
-  }, [gsColl]);
+  }, [gsColl, collection]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -57,7 +58,7 @@ function Play(props) {
     if(result==="success"&&(time<highScore || highScore<0)){
       setHighScore(time);
     }
-  }, [time]);
+  }, [time, result, highScore, setHighScore]);
 
   function generateMix() {
     var i, red = 0, green = 0, blue = 0;
