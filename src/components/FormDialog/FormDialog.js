@@ -5,6 +5,7 @@ import { Button, ButtonBase,
   DialogContent, DialogContentText, DialogTitle, 
   TextField 
 } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 import butt from "../SoundEffect/barbutton.mp3";
 
 function cusColor(red, green, blue) {
@@ -56,7 +57,7 @@ function FormDialog(props) {
           className={styles.base}
           onClick={handleClickOpen} 
         >
-          <p className={styles.text}>Change This Color</p>
+          <EditIcon style={{fontSize: 35}} />
         </ButtonBase>
       </div>
       <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">

@@ -1,19 +1,10 @@
 .buttonBG {
-  border-color: #7349ce;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 1.5px;
   height: 35px;
-  width: 150px;
+  width: 35px;
   margin-left: 20px;
 }
 
 .base {
   height: 100%;
   width: 100%;
-}
-
-.text {
-  color: #7349ce;
-  font-size: 15px;
 }

@@ -3,7 +3,7 @@ import styles from "./PageCollection.module.css";
 import { firebase } from "@firebase/app";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
-import { Menu, MenuItem } from '@material-ui/core';
+import { ButtonBase, Menu, MenuItem } from '@material-ui/core';
 import "@firebase/firestore";
 
 function rgbToHsl(color){
@@ -96,11 +96,14 @@ function PageCollection(props) {
     <div>
       <div className={styles.bg}></div>
       <div className={styles.container}>
-        <HorizontalSplitIcon
-          style={{fontSize: 50}}
-          className={styles.switch} 
-          onClick={() => setSplit(!split)}
-        />
+        <div className={styles.buttonBG}>
+          <ButtonBase className={styles.base}>
+            <HorizontalSplitIcon
+              style={{fontSize: 50}}
+              onClick={() => setSplit(!split)}
+            />
+          </ButtonBase>
+        </div>
         <Menu
           elevation={0} 
           getContentAnchorEl={null} 
