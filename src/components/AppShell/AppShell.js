@@ -13,7 +13,7 @@ function AppShell(props) {
 
   function PlaySound() {
     var sound = document.getElementById("button");
-    sound.volume="0.5";
+    sound.volume="1.0";
     sound.play();
   } 
 

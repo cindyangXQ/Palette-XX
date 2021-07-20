@@ -122,25 +122,25 @@ function Play(props) {
 
   function ConfirmSound() {
     var sound = document.getElementById("confirmAud");
-    sound.volume="0.4";
+    sound.volume="0.8";
     sound.play();
   } 
 
   function FailSound() {
     var sound = document.getElementById("failAud");
-    sound.volume="0.4";
+    sound.volume="0.5";
     sound.play();
   } 
 
   function SuccessSound() {
     var sound = document.getElementById("successAud");
-    sound.volume="0.4";
+    sound.volume="0.5";
     sound.play();
   } 
 
   function ButtSound() {
     var sound = document.getElementById("butt");
-    sound.volume="0.4";
+    sound.volume="1.0";
     sound.play();
   } 
 

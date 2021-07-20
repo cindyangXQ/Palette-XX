@@ -79,13 +79,13 @@ function PageMix(props) {
 
   function ConfirmSound() {
     var sound = document.getElementById("confirm");
-    sound.volume="0.4";
+    sound.volume="0.6";
     sound.play();
   } 
 
   function ButtSound() {
     var sound = document.getElementById("butt");
-    sound.volume="0.4";
+    sound.volume="1.0";
     sound.play();
   } 
 

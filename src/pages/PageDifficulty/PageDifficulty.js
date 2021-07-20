@@ -7,7 +7,7 @@ function PageDifficulty(props) {
 
   function PlaySound() {
     var sound = document.getElementById("audio");
-    sound.volume="0.2 ";
+    sound.volume="0.3";
     sound.play();
   } 
 

@@ -14,6 +14,7 @@ import {
 } from "@react-firebase/auth";
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
+import lechang from "./components/SoundEffect/Lechang.mp3";
 
 function App() {
   const [ mode, setMode ] = useState("Mode");
@@ -49,9 +50,15 @@ function App() {
     db.collection("/mdmScore").doc(uid).set({ mdmScore: mdmScore });
     db.collection("/dfcScore").doc(uid).set({ dfcScore: dfcScore });
   }, [easyScore, mdmScore, dfcScore]);
-  
+
+  function BgmSound() {
+    var sound = document.getElementById("lechang");
+    sound.volume="0.4";
+  } 
+
   return (
     <div className="App">
+      <audio loop autoPlay src={lechang} id="lechang" onload={BgmSound}/>
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
           <AppShell setMode={setMode} />

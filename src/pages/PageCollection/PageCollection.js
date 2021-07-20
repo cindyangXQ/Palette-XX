@@ -95,7 +95,7 @@ function PageCollection(props) {
 
   function ButtSound() {
     var sound = document.getElementById("butt");
-    sound.volume="0.4";
+    sound.volume="1.0";
     sound.play();
   } 
 

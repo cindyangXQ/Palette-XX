@@ -71,13 +71,13 @@ function TargetColor(props) {
 
   function WaterSound() {
     var sound = document.getElementById("water");
-    sound.volume="0.4";
+    sound.volume="1";
     sound.play();
   } 
 
   function ConfirmSound() {
     var sound = document.getElementById("confirm");
-    sound.volume="0.4";
+    sound.volume="1";
     sound.play();
   } 
 
