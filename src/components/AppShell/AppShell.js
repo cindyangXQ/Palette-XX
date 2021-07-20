@@ -5,9 +5,11 @@ import styles from "./AppShell.module.css";
 import logo from "./logo.png";
 import button from "../SoundEffect/barbutton.mp3";
 import { Fragment } from "react";
+import VolumeUpIcon from "@material-ui/icons/VolumeUp";
+import { SettingsRounded } from "@material-ui/icons";
 
 function AppShell(props) {
-  const { mode, setMode } = props;
+  const { mode, setMode, setSound, sound } = props;
 
   const handleLogout = (firebase) => {
     setMode("Mode");
@@ -65,6 +67,7 @@ function AppShell(props) {
         <div className={styles.buttonBG}>
           <ButtonBase
             className={styles.base}
+            onClick={()=>{setSound(!sound)}}
           >
             <Tooltip 
               arrow 
@@ -149,6 +152,8 @@ function AppShell(props) {
             >
               <InfoOutlinedIcon style={{fontSize: 25}} />
             </Tooltip>
+            <VolumeUpIcon 
+             style={{float:"right", marginLeft:"15px", marginRight:"25px"}} />
           </ButtonBase>
         </div>
       </div>

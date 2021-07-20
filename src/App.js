@@ -28,6 +28,7 @@ function App() {
   const [ mdmScore, setMdmScore ] = useState(-1);
   const [ dfcScore, setDfcScore ] = useState(-1);
   const [ name, setName ] = useState("<Click to set>");
+  const [ sound, setSound] = useState(false);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -58,10 +59,14 @@ function App() {
 
   return (
     <div className="App">
-      <audio loop autoPlay src={lechang} id="lechang" onload={BgmSound}/>
+      <div style={{position:"fixed", width:"100%", zIndex:3, marginTop:"-70px"}}>
+        <audio loop autoPlay src={lechang} id="lechang" onload={BgmSound}
+         controls={sound} style={{ float:"right"}}/>
+      </div>
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
-          <AppShell mode={mode} setMode={setMode} />
+          <AppShell mode={mode} setMode={setMode} 
+           setSound={setSound} sound={sound} />
           { mode === "Mode" 
             ? <PageMode setMode={setMode} />
             : mode === "Difficulty" 
