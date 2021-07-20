@@ -34,14 +34,14 @@ function App() {
     const db = firebase.firestore();
     db.collection("/collection").doc(uid).set({ collection: collection });
     db.collection("/mixColl").doc(uid).set({ mixColl: mixColl });
-  }, [mixColl]);
+  }, [mixColl, collection]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
     db.collection("/collection").doc(uid).set({ collection:collection });
     db.collection("/gsColl").doc(uid).set({ gsColl:gsColl});
-  }, [gsColl]);
+  }, [gsColl, collection]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -61,7 +61,7 @@ function App() {
       <audio loop autoPlay src={lechang} id="lechang" onload={BgmSound}/>
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
-          <AppShell setMode={setMode} />
+          <AppShell mode={mode} setMode={setMode} />
           { mode === "Mode" 
             ? <PageMode setMode={setMode} />
             : mode === "Difficulty" 
