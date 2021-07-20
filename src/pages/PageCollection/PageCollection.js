@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import styles from "./PageCollection.module.css";
 import { firebase } from "@firebase/app";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
-import { ButtonBase, Menu, MenuItem } from '@material-ui/core';
+import { ButtonBase, Fade, Tooltip } from '@material-ui/core';
 import "@firebase/firestore";
 
 function rgbToHsl(color){
@@ -34,8 +34,6 @@ function PageCollection(props) {
           mixColl, setMixColl, 
           gsColl, setGsColl } = props;
   const [ split, setSplit ] = useState(false);
-  const [anchor, setAnchor] = useState(null);
-  const [i, setI] = useState(-1);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -104,95 +102,85 @@ function PageCollection(props) {
             />
           </ButtonBase>
         </div>
-        <Menu
-          elevation={0} 
-          getContentAnchorEl={null} 
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          anchorEl={anchor} 
-          keepMounted
-          open={Boolean(anchor)}
-          onClose={() => {
-            setAnchor(null);
-            setI(-1);
-          }}
-        >
-          <MenuItem onClick={() => {
-            setAnchor(null);
-            setI(-1);
-          }}>
-            {i >= 0 ? collection[i].rgb : ""}
-          </MenuItem>
-          <MenuItem onClick={() => {
-            setAnchor(null);
-            setI(-1);
-          }}>
-            {i >= 0 ? rgbToHsl(collection[i]): ""}
-          </MenuItem>
-        </Menu>
         { split ? (
           <div>
             <p className={styles.achieve}>Guess Achievements</p>
             <div className={styles.box}>
               {gsColl.map((position, index) => (
-                <div 
-                  className={styles.display} 
-                  style={collection[position].cssString}
-                  onClick={(event) => {
-                    setAnchor(event.currentTarget);
-                    setI(position);
-                  }}
-                >
+                <Tooltip 
+                arrow 
+                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+                title={
+                  <Fragment>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {collection[position].rgb}
+                    </p>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {rgbToHsl(collection[position])}
+                    </p>
+                  </Fragment>
+                }
+              >
+                <div className={styles.display} style={collection[position].cssString} >
                   <HighlightOffIcon 
-                    type= "input" 
+                    type = "input" 
                     className={styles.delete} 
-                    onClick={() => delGs(index, position)} 
+                    onClick={() => delGs(index, position)}
                   >
                     delete
                   </HighlightOffIcon>
                 </div>
+              </Tooltip>
               ))}
             </div>
             <p className={styles.achieve}>Mix Achievements</p>
             <div className={styles.box}>
               {mixColl.map((position, index) => (
-                <div 
-                  className={styles.display} 
-                  style={collection[position].cssString}
-                  onClick={(event) => {
-                    setAnchor(event.currentTarget);
-                    setI(position);
-                  }}
-                >
+                <Tooltip 
+                arrow 
+                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+                title={
+                  <Fragment>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {collection[position].rgb}
+                    </p>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {rgbToHsl(collection[position])}
+                    </p>
+                  </Fragment>
+                }
+              >
+                <div className={styles.display} style={collection[position].cssString} >
                   <HighlightOffIcon 
                     type = "input" 
                     className={styles.delete} 
-                    onClick={() => delMix(index, position)} 
+                    onClick={() => delMix(index, position)}
                   >
                     delete
                   </HighlightOffIcon>
                 </div>
+              </Tooltip>
               ))}
             </div>
           </div>
         ) : (
-          <div>
-            <div className={styles.box}>
-              {collection.map((collect, index) => (
-                <div 
-                  className={styles.display}  
-                  style={collect.cssString} 
-                  onClick={(event) => {
-                    setAnchor(event.currentTarget);
-                    setI(index);
-                  }}
-                >
+          <div className={styles.box}>
+            {collection.map((collect, index) => (
+              <Tooltip 
+                arrow 
+                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+                title={
+                  <Fragment>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {collect.rgb}
+                    </p>
+                    <p style={{fontSize: 17, textAlign: "center"}}>
+                      {rgbToHsl(collect)}
+                    </p>
+                  </Fragment>
+                }
+              >
+                <div className={styles.display} style={collect.cssString} >
                   <HighlightOffIcon 
                     type = "input" 
                     className={styles.delete} 
@@ -201,8 +189,8 @@ function PageCollection(props) {
                     delete
                   </HighlightOffIcon>
                 </div>
-              ))}
-            </div>
+              </Tooltip>
+            ))}
           </div>
         )}
       </div>

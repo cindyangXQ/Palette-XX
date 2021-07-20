@@ -25,8 +25,20 @@
 }
 
 .button {
+  float: right;
+  right: 30px;
   height: 31px;
   top: 17px;
-  right: 30px;
+}
+
+.buttonBG {
   float: right;
+  height: 31px;
+  width: 31px;
+  margin: 17px 40px;
+}
+
+.base {
+  height: 100%;
+  width: 100%;
 }

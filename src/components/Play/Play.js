@@ -91,7 +91,8 @@ function Play(props) {
       setResult("success");
       document.getElementById("success").style.display="block";
       document.getElementById("score").style.display="block";
-      setPoint(prevstate => prevstate + 1);
+      var p = level === "Easy" ? 1 : level === "Medium" ? 2 : 3;
+      setPoint(prevstate => prevstate + p);
       setGsColl([...gsColl, collection.length]);
       setCollection([...collection, targetColor]);
     } else{

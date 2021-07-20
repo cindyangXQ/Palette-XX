@@ -44,9 +44,9 @@
 .containerRow {
   position: relative;
   height: 43px;
-  width: 780px;
+  width: 660px;
   left: 50%;
-  margin-left: -390px;
+  margin-left: -330px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: row;
@@ -59,8 +59,8 @@
   border-width: 1.5px;
   height: 100%;
   width: 120px;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
   z-index: 3;
 }
 
