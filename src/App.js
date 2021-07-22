@@ -27,7 +27,6 @@ function App() {
   const [ easyScore, setEasyScore ] = useState(-1);
   const [ mdmScore, setMdmScore ] = useState(-1);
   const [ dfcScore, setDfcScore ] = useState(-1);
-  const [ name, setName ] = useState("<Click to set>");
   const [ sound, setSound] = useState(false);
 
   useEffect(() => {
@@ -65,8 +64,10 @@ function App() {
       </div>
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
-          <AppShell mode={mode} setMode={setMode} 
-           setSound={setSound} sound={sound} />
+          <AppShell 
+            mode={mode} setMode={setMode} 
+            sound={sound} setSound={setSound} 
+          />
           { mode === "Mode" 
             ? <PageMode setMode={setMode} />
             : mode === "Difficulty" 
@@ -92,9 +93,8 @@ function App() {
                 point={point} setPoint={setPoint} 
                 toolsUsed={toolsUsed} setToolsUsed={setToolsUsed}
                 easyScore={easyScore} setEasyScore={setEasyScore} 
-                mdmScore={mdmScore}   setMdmScore={setMdmScore}
-                dfcScore={dfcScore}   setDfcScore={setDfcScore}
-                name={name} setName={setName} 
+                mdmScore={mdmScore} setMdmScore={setMdmScore}
+                dfcScore={dfcScore} setDfcScore={setDfcScore}
               />
             : mode === "Collection" 
             ? <PageCollection 

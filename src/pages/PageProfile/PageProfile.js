@@ -8,7 +8,7 @@ import "@firebase/firestore";
 function PageProfile(props) {
   const { point, setPoint, toolsUsed, setToolsUsed,
           easyScore, setEasyScore ,mdmScore, setMdmScore, dfcScore, setDfcScore, 
-          name, setName } = props;
+        } = props;
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -68,7 +68,7 @@ function PageProfile(props) {
         setToolsUsed(0);
       }
     });
-  }, [setPoint]);
+  }, [setPoint, setToolsUsed]);
 
   return (
     <div>
