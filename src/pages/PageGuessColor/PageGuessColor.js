@@ -10,7 +10,7 @@ function PageGuessColor(props) {
           gsColl, setGsColl, 
           easyScore, setEasyScore, 
           mdmScore, setMdmScore, 
-          dfcScore, setDfcScore } = props;
+          dfcScore, setDfcScore, sEffect } = props;
 
   const [targetColor, setTargetColor] = useState({});
   const [show, setShow] = useState("showTarget");
@@ -23,7 +23,7 @@ function PageGuessColor(props) {
       {show === "showTarget" ? (
         <TargetColor 
           level={level} setShow={setShow} setTargetColor={setTargetColor}
-          setChoices={setChoices} setPcts={setPcts}  
+          setChoices={setChoices} setPcts={setPcts}  sEffect={sEffect}
         />
       ) : (
         <Play 
@@ -34,7 +34,8 @@ function PageGuessColor(props) {
           collection={collection} setCollection={setCollection} 
           gsColl={gsColl} setGsColl={setGsColl} 
           highScore={level === "Easy" ? easyScore : level === "Medium" ? mdmScore : dfcScore} 
-          setHighScore={level === "Easy" ? setEasyScore : level === "Medium" ? setMdmScore : setDfcScore} 
+          setHighScore={level === "Easy" ? setEasyScore : level === "Medium" ? setMdmScore : setDfcScore}
+          sEffect={sEffect} 
         />
       )}
     </div>

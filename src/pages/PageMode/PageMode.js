@@ -6,11 +6,11 @@ import profilePic from "./profile.png";
 import buttonSound from "../../components/SoundEffect/button.mp3";
 
 function PageMode(props) {
-  const { setMode } = props;
+  const { setMode, sEffect} = props;
   function PlaySound() {
     var sound = document.getElementById("audio");
     sound.volume="0.3";
-    sound.play();
+    sEffect && sound.play();
   } 
   return (
     <div>
@@ -25,7 +25,7 @@ function PageMode(props) {
           className={styles.button1Pos}
           onClick={() => {
             PlaySound();
-            setTimeout(()=>{setMode("Difficulty")},450);
+            setTimeout(()=>{setMode("Difficulty")},500);
           }}
         >
           <div className={styles.buttonBG}>
@@ -40,7 +40,7 @@ function PageMode(props) {
           className={styles.button2Pos}
           onClick={() => {
             PlaySound();
-            setTimeout(()=>{setMode("Mix")},450);
+            setTimeout(()=>{setMode("Mix")},500);
           }}
         >
           <div className={styles.buttonBG}>
@@ -55,7 +55,7 @@ function PageMode(props) {
           className={styles.button3Pos}
           onClick={() => {
             PlaySound();
-            setTimeout(()=>{setMode("Profile")},450);
+            setTimeout(()=>{setMode("Profile")},500);
           }}
         >
           <div className={styles.buttonBG}>
@@ -68,7 +68,7 @@ function PageMode(props) {
           className={styles.button4Pos}
           onClick={() => {
             PlaySound();
-            setTimeout(()=>{setMode("Collection")},450);
+            setTimeout(()=>{setMode("Collection")},500);
           }}
         >
           <div className={styles.buttonBG}>

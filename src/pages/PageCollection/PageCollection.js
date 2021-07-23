@@ -33,7 +33,7 @@ function rgbToHsl(color){
 function PageCollection(props) {
   const { collection, setCollection, 
           mixColl, setMixColl, 
-          gsColl, setGsColl } = props;
+          gsColl, setGsColl, sEffect } = props;
   const [ split, setSplit ] = useState(false);
 
   useEffect(() => {
@@ -94,7 +94,8 @@ function PageCollection(props) {
   function ButtSound() {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
-    sound.play();
+    sEffect && sound.play();
+    
   } 
 
   return (

@@ -30,7 +30,7 @@ function Play(props) {
         choices, setChoices,  
         collection, setCollection, 
         gsColl, setGsColl, 
-        highScore, setHighScore } = props;
+        highScore, setHighScore, sEffect } = props;
   const [tip, setTip] = useState(0);
   const [time, setTime] = useState(0);
   const [result, setResult] = useState("");
@@ -124,25 +124,25 @@ function Play(props) {
   function ConfirmSound() {
     var sound = document.getElementById("confirmAud");
     sound.volume="0.8";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   function FailSound() {
     var sound = document.getElementById("failAud");
     sound.volume="0.5";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   function SuccessSound() {
     var sound = document.getElementById("successAud");
     sound.volume="0.5";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   function ButtSound() {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   return (
@@ -163,7 +163,7 @@ function Play(props) {
             setTime={setTime} 
             result={result} 
           />
-          <ColorList choices={choices} setChoices={setChoices} />
+          <ColorList choices={choices} setChoices={setChoices} sEffect={sEffect}/>
           <div className={styles.containerRow}>
             <div className={styles.buttonBG1}>
               <ButtonBase

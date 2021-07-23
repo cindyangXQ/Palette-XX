@@ -20,7 +20,7 @@ function cusColor(red, green, blue) {
 }
 
 function FormDialog(props) {
-  const { choices, setChoices, index } = props;
+  const { choices, setChoices, index, sEffect } = props;
 
   const [open, setOpen] = useState(false);
   const [r, setR] = useState(0);
@@ -33,10 +33,12 @@ function FormDialog(props) {
   };
 
   const handleCancel = () => {
+    ButtSound();
     setOpen(false);
   };
 
   const handleConfirm = () => {
+    ButtSound();
     var newChoices = choices.concat([]);
     newChoices[index].color = cusColor(r, g, b);
     setChoices(newChoices);
@@ -46,7 +48,7 @@ function FormDialog(props) {
   function ButtSound() {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   return (

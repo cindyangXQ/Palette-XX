@@ -32,7 +32,7 @@ function generateMix(c0, c1, c2, p0, p1, p2) {
 function TargetColor(props) {
   const [check, setCheck] = useState(true);
   const { level, setShow, setTargetColor, 
-          setChoices, setPcts } = props;
+          setChoices, setPcts, sEffect } = props;
 
   function setupAllColors() {
     var flag = true;
@@ -72,13 +72,13 @@ function TargetColor(props) {
   function WaterSound() {
     var sound = document.getElementById("water");
     sound.volume="1";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   function ConfirmSound() {
     var sound = document.getElementById("confirm");
     sound.volume="1";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   return (

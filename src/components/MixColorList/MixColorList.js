@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import butt from "../SoundEffect/barbutton.mp3";
 
 function MixColorList(props) {
-  const { choices, setChoices } = props;
+  const { choices, setChoices, sEffect } = props;
 
   function del(index) {
     var newChoice = choices.slice(0, index).concat(choices.slice(index+1));
@@ -16,7 +16,7 @@ function MixColorList(props) {
   function ButtSound() {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   return (
@@ -28,7 +28,7 @@ function MixColorList(props) {
           <p className={styles.style1}>0</p>
           <CustomizeSlider choices={choices} setChoices={setChoices} index={index} />
           <p className={styles.style2}>100%</p>
-          <FormDialog choices={choices} setChoices={setChoices} index={index} />
+          <FormDialog choices={choices} setChoices={setChoices} index={index} sEffect={sEffect}/>
           <div className={styles.buttonBG}>
             <ButtonBase
               className={styles.base}

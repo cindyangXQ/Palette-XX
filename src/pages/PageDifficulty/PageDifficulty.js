@@ -3,12 +3,12 @@ import { ButtonBase } from "@material-ui/core";
 import buttonSound from "../../components/SoundEffect/button.mp3";
 
 function PageDifficulty(props) {
-  const { setMode, setLevel } = props;
+  const { setMode, setLevel, sEffect } = props;
 
   function PlaySound() {
     var sound = document.getElementById("audio");
     sound.volume="0.3";
-    sound.play();
+    sEffect && sound.play(); 
   } 
 
   return (
@@ -32,7 +32,7 @@ function PageDifficulty(props) {
               setTimeout(()=>{
               setLevel("Easy");
               setMode("Guess");
-              },450);
+              },500);
             }}
           >
             <strong className={styles.text}>Easy</strong>
@@ -47,7 +47,7 @@ function PageDifficulty(props) {
               setTimeout(()=>{
               setLevel("Medium");
               setMode("Guess");
-              },450);
+              },500);
             }}
           >
             <strong className={styles.text}>Medium</strong>
@@ -62,7 +62,7 @@ function PageDifficulty(props) {
               setTimeout(()=>{
               setLevel("Difficult");
               setMode("Guess");
-              },450);
+              },500);
             }}
           >
             <strong className={styles.text}>Difficult</strong>

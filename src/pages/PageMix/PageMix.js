@@ -28,7 +28,7 @@ function randomColor() {
 }
 
 function PageMix(props) {
-  const { collection, setCollection, mixColl, setMixColl } = props;
+  const { collection, setCollection, mixColl, setMixColl, sEffect } = props;
   const [choices, setChoices] = useState([
     {color: randomColor(), pct: 0}, 
     {color: randomColor(), pct: 0}, 
@@ -80,13 +80,13 @@ function PageMix(props) {
   function ConfirmSound() {
     var sound = document.getElementById("confirm");
     sound.volume="0.6";
-    sound.play();
+    sEffect && sound.play();
   } 
 
   function ButtSound() {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
-    sound.play();
+    sEffect && sound.play();
   } 
 
 
@@ -101,7 +101,7 @@ function PageMix(props) {
           <div className={styles.box2}>
             <h1 className={styles.title1}>MIX!</h1>
             <div className={styles.colorList}>
-              <MixColorList choices={choices} setChoices={setChoices} />
+              <MixColorList choices={choices} setChoices={setChoices} sEffect={sEffect}/>
             </div>
             <div className={styles.containerRow}>
               <div className={styles.buttonBG}>
