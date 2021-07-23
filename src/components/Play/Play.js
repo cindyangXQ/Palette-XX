@@ -32,7 +32,7 @@ function Play(props) {
         gsColl, setGsColl, 
         highScore, setHighScore, sEffect } = props;
   const [tip, setTip] = useState(0);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(-1);
   const [result, setResult] = useState("");
 
   useEffect(() => {
