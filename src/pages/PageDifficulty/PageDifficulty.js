@@ -29,10 +29,10 @@ function PageDifficulty(props) {
             className={styles.base}
             onClick={() => {
               PlaySound();
-              setTimeout(()=>{
-              setLevel("Easy");
-              setMode("Guess");
-              },500);
+              setTimeout(() => {
+                setLevel("Easy");
+                setMode("Guess");
+              }, 500);
             }}
           >
             <strong className={styles.text}>Easy</strong>
@@ -44,10 +44,10 @@ function PageDifficulty(props) {
             className={styles.base}
             onClick={() => {
               PlaySound();
-              setTimeout(()=>{
-              setLevel("Medium");
-              setMode("Guess");
-              },500);
+              setTimeout(() => {
+                setLevel("Medium");
+                setMode("Guess");
+              }, 500);
             }}
           >
             <strong className={styles.text}>Medium</strong>
@@ -59,10 +59,10 @@ function PageDifficulty(props) {
             className={styles.base}
             onClick={() => {
               PlaySound();
-              setTimeout(()=>{
-              setLevel("Difficult");
-              setMode("Guess");
-              },500);
+              setTimeout(() => {
+                setLevel("Difficult");
+                setMode("Guess");
+              }, 500);
             }}
           >
             <strong className={styles.text}>Difficult</strong>

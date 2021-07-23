@@ -8,10 +8,9 @@ import logo from "./logo.png";
 import button from "../SoundEffect/barbutton.mp3";
 import { IfFirebaseAuthed } from "@react-firebase/auth";
 import { Fragment } from "react";
-import React from "react";
 
 function AppShell(props) {
-  const { mode, setMode, anchorEl, setAnchorEl, sEffect } = props;
+  const { mode, setMode, setAnchorEl, sEffect } = props;
 
   const handleLogout = (firebase) => {
     setMode("Mode");
@@ -21,9 +20,7 @@ function AppShell(props) {
   function PlaySound() {
     var sound = document.getElementById("button");
     sound.volume="1.0";
-    
     sEffect && sound.play();
-    
   } 
 
   return (

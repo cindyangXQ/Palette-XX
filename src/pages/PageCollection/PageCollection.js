@@ -95,7 +95,6 @@ function PageCollection(props) {
     var sound = document.getElementById("butt");
     sound.volume="1.0";
     sEffect && sound.play();
-    
   } 
 
   return (

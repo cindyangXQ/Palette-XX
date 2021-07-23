@@ -14,15 +14,10 @@ import {
 } from "@react-firebase/auth";
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
-import lechang from "./components/SoundEffect/Lechang.mp3";
-import React from "react";
-import Popover from '@material-ui/core/Popover';
-import Grid from '@material-ui/core/Grid';
-import Slider from '@material-ui/core/Slider';
+import { ButtonBase, Divider, Grid, Popover, Slider } from "@material-ui/core";
 import VolumeUp from '@material-ui/icons/VolumeUp';
-import { ButtonBase } from "@material-ui/core";
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
-import Divider from '@material-ui/core/Divider';
+import lechang from "./components/SoundEffect/Lechang.mp3";
 import butt from "./components/SoundEffect/barbutton.mp3";
 
 function App() {
@@ -36,10 +31,10 @@ function App() {
   const [ easyScore, setEasyScore ] = useState(-1);
   const [ mdmScore, setMdmScore ] = useState(-1);
   const [ dfcScore, setDfcScore ] = useState(-1);
-  const [ anchorEl, setAnchorEl ] = React.useState(null);
+  const [ anchorEl, setAnchorEl ] = useState(null);
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-  const [ value, setValue ] = React.useState(100);
+  const [ value, setValue ] = useState(100);
   const [ sEffect, setSEffect ] = useState(true);
  
   const handleChange = (event, newValue) => {
@@ -114,54 +109,59 @@ const handleClose = () => {
             Background Music Volume
           </h4>
           <Grid container spacing={2} style={{padding:"4%", marginTop:"-30px"}}>
-          <Grid item>
-            <ButtonBase>
-              {audio==null || audio.paused===true 
-               ? <VolumeOffIcon 
-                  onClick={()=>{
-                    document.getElementById("lechang").play();
-                    setAnchorEl(null);
-                  }}/>
-               : <VolumeUp style={{color:"#313540"}} 
-                  onClick={()=>{
-                    ButtSound();
-                    document.getElementById("lechang").pause(); 
-                    setAnchorEl(null);
-                  } 
-                  }/>}
-            </ButtonBase>
+            <Grid item>
+              <ButtonBase>
+                {audio==null || audio.paused===true 
+                  ? <VolumeOffIcon 
+                      onClick={() => {
+                        document.getElementById("lechang").play();
+                        setAnchorEl(null);
+                      }}
+                    />
+                  : <VolumeUp style={{color:"#313540"}} 
+                      onClick={()=>{
+                        ButtSound();
+                        document.getElementById("lechang").pause(); 
+                        setAnchorEl(null);
+                      }}
+                    />
+                }
+              </ButtonBase>
+            </Grid>
+            <Grid item xs>
+              <Slider 
+                style={{color:"#313540"}} disabled={false} id="slider"
+                value={value} onChange={handleChange} aria-labelledby="continuous-slider" 
+              />
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <Slider 
-             style={{color:"#313540"}} disabled={false} id="slider"
-             value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
-          </Grid>
-        </ Grid>
-        <Divider style={{marginBottom:"30px"}}/>
-            <h4 style={{fontSize:"16px", padding:"4%", color:"#313540"
-                      , fontFamily: "'Quicksand', sans-serif", display:"inline"}}>
-              Sound Effect
-            </h4>
+          <Divider style={{marginBottom:"30px"}}/>
+          <h4 style={{fontSize:"16px", padding:"4%", color:"#313540"
+                    , fontFamily: "'Quicksand', sans-serif", display:"inline"}}>
+            Sound Effect
+          </h4>
           <ButtonBase style={{marginLeft:"30px", display:"inline"}}>
-              {sEffect === false
-              ? <VolumeOffIcon 
-                  onClick={()=>{
-                    ButtSound();
-                    setSEffect(true);
-                  }}/>
-               : <VolumeUp style={{color:"#313540"}} 
-                  onClick={()=>{
-                    setSEffect(false);
-                  } 
-               }/>}
-            </ButtonBase>
+            {sEffect === false
+            ? <VolumeOffIcon 
+                onClick={()=>{
+                  ButtSound();
+                  setSEffect(true);
+                }}
+              />
+            : <VolumeUp style={{color:"#313540"}} 
+                onClick={()=>{
+                  setSEffect(false);
+                }}
+              />
+            }
+          </ButtonBase>
         </div>
       </Popover>
       <FirebaseAuthConsumer>
         <IfFirebaseAuthed>
           <AppShell 
             mode={mode} setMode={setMode} 
-            anchorEl={anchorEl} setAnchorEl={setAnchorEl}
+            setAnchorEl={setAnchorEl}
             sEffect={sEffect}
           />
           { mode === "Mode" 
