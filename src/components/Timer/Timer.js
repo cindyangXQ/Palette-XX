@@ -12,7 +12,7 @@ const Timer = (props) => {
       setTime(seconds);
       setIsActive(false);
     }
-  }, [result, setTime]);
+  }, [result, setTime, seconds]);
 
   useEffect(() => {
     let interval = null;

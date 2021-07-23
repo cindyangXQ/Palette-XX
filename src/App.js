@@ -45,7 +45,8 @@ function App() {
 
   const audio=document.getElementById("lechang");
 
-  useEffect(()=>{} , [audio==null || audio.paused===true])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(()=>{} , [audio === null || audio.paused])
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
