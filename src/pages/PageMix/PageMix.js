@@ -10,7 +10,7 @@ import confirm from "../../components/SoundEffect/confirm.mp3";
 
 function cusColor(red, green, blue) {
   var rr = Math.min(255, red), gg = Math.min(255, green), bb = Math.min(255, blue);
-  var rgbstring = "rgb(" + rr + ", " + gg + ", " + bb + ")";
+  var rgbstring = "RGB(" + rr + ", " + gg + ", " + bb + ")";
   return {
     rgb: rgbstring, 
     r: rr, 

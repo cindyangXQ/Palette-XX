@@ -40,14 +40,30 @@
   margin: 17px 10px;
 }
 
-.instruction {
+.info {
   float: right;
-  height: 31px;
-  width: 31px;
-  margin: 20px 10px;
+  height: 25px;
+  width: 25px;
+  margin: 20px 13px;
 }
 
 .base {
   height: 100%;
   width: 100%;
 }
+
+a:link {
+  color: white;
+} 
+
+a:visited {
+  color: white;
+} 
+
+a:hover {
+  color: white;
+} 
+
+a:active {
+  color: white;
+} 

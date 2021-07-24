@@ -27,14 +27,39 @@ function rgbToHsl(color){
       }
       h = Math.floor(h) % 360;
   }
-  return "hsl(" + h + ", " + Math.round(s*100) + "%, " + Math.round(l*100) + "%)";
+  s = Math.round(s*100);
+  l = Math.round(l*100);
+  return {
+    hsl: "HSL(" + h + ", " + s + "%, " + l + "%)", 
+    h: h, s: s, l:l
+  };
+}
+
+function sortby(how, colorArr) {
+  var f = 
+      how === "Hue"
+      ? x => rgbToHsl(x).h
+      : how === "Saturation"
+      ? x => rgbToHsl(x).s
+      : how === "Lightness"
+      ? x => rgbToHsl(x).l
+      : how === "Red"
+      ? x => x.r
+      : how === "Green"
+      ? x => x.g
+      : x => x.b;
+  var copy = colorArr.concat([]);
+  copy.sort(function(x, y) {
+    return f(x) - f(y);
+  })
+  return copy;
 }
 
 function PageCollection(props) {
   const { collection, setCollection, 
           mixColl, setMixColl, 
           gsColl, setGsColl, sEffect } = props;
-  const [ split, setSplit ] = useState(false);
+  const [ split, setSplit ] = useState("all");
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -67,6 +92,82 @@ function PageCollection(props) {
       }
     });
   }, [setCollection, setGsColl, setMixColl]);
+
+
+  function splitdiv(which) {
+    var coll = 
+        which === "Guess"
+        ? gsColl
+        : mixColl;
+    var delfunc = 
+        which === "Guess"
+        ? delGs
+        : delMix;
+    return (
+      <div>
+        <p className={styles.achieve}>{which} Achievements</p>
+        <div className={styles.box}>
+          {coll.map((position, index) => (
+            <Tooltip 
+              arrow 
+              TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+              title={
+                <Fragment>
+                  <p style={{fontSize: 17, textAlign: "center"}}>
+                    {collection[position].rgb}
+                  </p>
+                  <p style={{fontSize: 17, textAlign: "center"}}>
+                    {rgbToHsl(collection[position]).hsl}
+                  </p>
+                </Fragment>
+              }
+            >
+              <div className={styles.display} style={collection[position].cssString} >
+                <HighlightOffIcon 
+                  type = "input" 
+                  className={styles.delete} 
+                  onClick={() => {
+                    ButtSound();
+                    delfunc(index, position);
+                  }} 
+                >
+                  delete
+                </HighlightOffIcon>
+              </div>
+            </Tooltip>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  function sortdiv(how) {
+    return (
+      <div>
+        <p className={styles.achieve}>Sorted by {how}</p>
+        <div className={styles.box}>
+          {sortby(how, collection).map((collect, index) => (
+            <Tooltip 
+              arrow 
+              TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+              title={
+                <Fragment>
+                  <p style={{fontSize: 17, textAlign: "center"}}>
+                    {collect.rgb}
+                  </p>
+                  <p style={{fontSize: 17, textAlign: "center"}}>
+                    {rgbToHsl(collect).hsl}
+                  </p>
+                </Fragment>
+              }
+            >
+              <div className={styles.display} style={collect.cssString}></div>
+            </Tooltip>
+          ))}
+        </div>
+      </div>
+    );
+  }  
 
   function delGs(index, position) {
     var newGsColl = gsColl.slice(0, index).concat(gsColl.slice(index+1).map(x => x-1));
@@ -108,106 +209,50 @@ function PageCollection(props) {
               style={{fontSize: 50}}
               onClick={() =>{ 
                 ButtSound();
-                setSplit(!split)
+                setSplit(split === "all" ? "split" : split === "split" ? "sort" : "all");
               }}
             />
           </ButtonBase>
         </div>
-        { split ? (
+        { split === "split" ? (
           <div>
-            <p className={styles.achieve}>Guess Achievements</p>
+            { ["Guess", "Mix"].map(splitdiv) }
+          </div>
+        ) : split === "all" ? (
+          <div>
+            <p className={styles.achieve}>All Collections</p>
             <div className={styles.box}>
-              {gsColl.map((position, index) => (
+              {collection.map((collect, index) => (
                 <Tooltip 
-                arrow 
-                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
-                title={
-                  <Fragment>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {collection[position].rgb}
-                    </p>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {rgbToHsl(collection[position])}
-                    </p>
-                  </Fragment>
-                }
-              >
-                <div className={styles.display} style={collection[position].cssString} >
-                  <HighlightOffIcon 
-                    type = "input" 
-                    className={styles.delete} 
-                    onClick={() => {
-                      ButtSound();
-                      delGs(index, position);
-                    }} 
-                  >
-                    delete
-                  </HighlightOffIcon>
-                </div>
-              </Tooltip>
-              ))}
-            </div>
-            <p className={styles.achieve}>Mix Achievements</p>
-            <div className={styles.box}>
-              {mixColl.map((position, index) => (
-                <Tooltip 
-                arrow 
-                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
-                title={
-                  <Fragment>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {collection[position].rgb}
-                    </p>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {rgbToHsl(collection[position])}
-                    </p>
-                  </Fragment>
-                }
-              >
-                <div className={styles.display} style={collection[position].cssString} >
-                  <HighlightOffIcon 
-                    type = "input" 
-                    className={styles.delete} 
-                    onClick={() => {
-                      ButtSound();
-                      delMix(index, position);
-                    }} 
-                  >
-                    delete
-                  </HighlightOffIcon>
-                </div>
-              </Tooltip>
+                  arrow 
+                  TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+                  title={
+                    <Fragment>
+                      <p style={{fontSize: 17, textAlign: "center"}}>
+                        {collect.rgb}
+                      </p>
+                      <p style={{fontSize: 17, textAlign: "center"}}>
+                        {rgbToHsl(collect).hsl}
+                      </p>
+                    </Fragment>
+                  }
+                >
+                  <div className={styles.display} style={collect.cssString} >
+                    <HighlightOffIcon 
+                      type = "input" 
+                      className={styles.delete} 
+                      onClick={() => delColl(index)}
+                    >
+                      delete
+                    </HighlightOffIcon>
+                  </div>
+                </Tooltip>
               ))}
             </div>
           </div>
-        ) : (
-          <div className={styles.box}>
-            {collection.map((collect, index) => (
-              <Tooltip 
-                arrow 
-                TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
-                title={
-                  <Fragment>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {collect.rgb}
-                    </p>
-                    <p style={{fontSize: 17, textAlign: "center"}}>
-                      {rgbToHsl(collect)}
-                    </p>
-                  </Fragment>
-                }
-              >
-                <div className={styles.display} style={collect.cssString} >
-                  <HighlightOffIcon 
-                    type = "input" 
-                    className={styles.delete} 
-                    onClick={() => delColl(index)}
-                  >
-                    delete
-                  </HighlightOffIcon>
-                </div>
-              </Tooltip>
-            ))}
+        ) : ( //split === "sort"
+          <div>
+            { ["Hue", "Saturation", "Lightness", "Red", "Green", "Blue"].map(sortdiv) }
           </div>
         )}
       </div>

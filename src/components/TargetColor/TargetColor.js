@@ -5,7 +5,7 @@ import water from "../SoundEffect/waterdrop.mp3";
 import confirm from "../SoundEffect/confirm.mp3";
 
 function cusColor(red, green, blue) {
-  var rgbstring = "rgb(" + red + ", " + green + ", " + blue + ")";
+  var rgbstring = "RGB(" + red + ", " + green + ", " + blue + ")";
   return {
     rgb: rgbstring, 
     r: red, 
