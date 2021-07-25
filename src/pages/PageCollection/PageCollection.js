@@ -55,11 +55,26 @@ function sortby(how, colorArr) {
   return copy;
 }
 
+function groupbytone(colorArr) {
+  var result = [];
+  var i; 
+  for(i = 0; i < 12; i++) {
+    result[i] = [];
+  }
+  for(i = 0; i < colorArr.length; i++) {
+    var a = Math.floor((rgbToHsl(colorArr[i]).h + 15) % 360 / 30);
+    result[a].push(colorArr[i]);
+  }
+  return result;
+}
+
 function PageCollection(props) {
   const { collection, setCollection, 
           mixColl, setMixColl, 
           gsColl, setGsColl, sEffect } = props;
   const [ split, setSplit ] = useState("all");
+  const tones = ["Red", "Orange", "Yellow", "Chartreuse", "Green", "Spring Green", 
+                  "Cyan", "Azure", "Blue", "Violet", "Magenta", "Rose"];
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -141,33 +156,30 @@ function PageCollection(props) {
     );
   }
 
-  function sortdiv(how) {
+  function adiv(arr) {
     return (
-      <div>
-        <p className={styles.achieve}>Sorted by {how}</p>
-        <div className={styles.box}>
-          {sortby(how, collection).map((collect, index) => (
-            <Tooltip 
-              arrow 
-              TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
-              title={
-                <Fragment>
-                  <p style={{fontSize: 17, textAlign: "center"}}>
-                    {collect.rgb}
-                  </p>
-                  <p style={{fontSize: 17, textAlign: "center"}}>
-                    {rgbToHsl(collect).hsl}
-                  </p>
-                </Fragment>
-              }
-            >
-              <div className={styles.display} style={collect.cssString}></div>
-            </Tooltip>
-          ))}
-        </div>
+      <div className={styles.box}>
+        {arr.map((collect) => (
+          <Tooltip 
+            arrow 
+            TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
+            title={
+              <Fragment>
+                <p style={{fontSize: 17, textAlign: "center"}}>
+                  {collect.rgb}
+                </p>
+                <p style={{fontSize: 17, textAlign: "center"}}>
+                  {rgbToHsl(collect).hsl}
+                </p>
+              </Fragment>
+            }
+          >
+            <div className={styles.display} style={collect.cssString}></div>
+          </Tooltip>
+        ))}
       </div>
     );
-  }  
+  }
 
   function delGs(index, position) {
     var newGsColl = gsColl.slice(0, index).concat(gsColl.slice(index+1).map(x => x-1));
@@ -209,7 +221,10 @@ function PageCollection(props) {
               style={{fontSize: 50}}
               onClick={() =>{ 
                 ButtSound();
-                setSplit(split === "all" ? "split" : split === "split" ? "sort" : "all");
+                setSplit( split === "all" ? "split" 
+                        : split === "split" ? "tone" 
+                        : split === "tone" ? "sort" 
+                        : "all");
               }}
             />
           </ButtonBase>
@@ -250,9 +265,23 @@ function PageCollection(props) {
               ))}
             </div>
           </div>
+        ) : split === "tone" ? (
+          <div>
+          { groupbytone(collection).map((x, index) => (
+              <div>
+                <p className={styles.achieve}>{tones[index]} Tone</p>
+                {adiv(x)}
+              </div>
+            )) }
+          </div>
         ) : ( //split === "sort"
           <div>
-            { ["Hue", "Saturation", "Lightness", "Red", "Green", "Blue"].map(sortdiv) }
+            { ["Hue", "Saturation", "Lightness", "Red", "Green", "Blue"].map(x => (
+              <div>
+                <p className={styles.achieve}>Sorted by {x}</p>
+                {adiv(sortby(x, collection))}
+              </div>
+            )) }
           </div>
         )}
       </div>
