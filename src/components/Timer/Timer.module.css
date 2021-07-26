@@ -1,20 +1,7 @@
 .text {
-  float: left;
-  font-size: 20px;
+  float: right;
+  font-size: 25px;
   font-family: "Quicksand", sans-serif;
   font-weight: bolder;
   color: #412619;
-}
-
-.color {
-  float: left;
-  height: 40px;
-  width: 40px;
-  margin-top: -5px;
-  margin-left: 2%;
-  margin-right: 10%;
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 1.5px;
-  border-color: #412619;
 }

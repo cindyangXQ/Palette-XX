@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Timer.module.css";
 
 const Timer = (props) => {
-  const { level, targetColor, setTime, result } = props;
+  const { setTime, result } = props;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true);
 
@@ -29,19 +29,6 @@ const Timer = (props) => {
   return (
     <div>
       <div>
-        { level === "Easy" || level === "Medium"
-          ? <>
-              <span className={styles.text}>
-                Target Color:
-              </span>
-              <div
-                className={styles.color}
-                style={targetColor.cssString}
-              />
-            </>
-          : <></>
-        }
-        
         <span className={styles.text}>
           Timer:{" "}
           <span id="time">
