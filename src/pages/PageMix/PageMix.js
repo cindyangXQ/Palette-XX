@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./PageMix.module.css";
-import CurrentState from "../../components/CurrentState";
 import MixColorList from "../../components/MixColorList";
+import MixCurrentState from "../../components/MixCurrentState";
 import { ButtonBase } from "@material-ui/core";
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
@@ -97,7 +97,7 @@ function PageMix(props) {
       <div className={styles.bg}></div>
       <div className={styles.container}>
         <div className={styles.box}>
-          <CurrentState current={generateMix()} />
+          <MixCurrentState current={generateMix()} />
           <div className={styles.box2}>
             <h1 className={styles.title1}>MIX!</h1>
             <div className={styles.colorList}>

@@ -74,13 +74,15 @@ function Play(props) {
   }
 
   function checkAnswer() {
-    var res = true;
+    console.log(answerPcts);
+    console.log(choices.map(x => x.pct));
+    var mistake = level === "Difficult" ? 0.10 : 0.20;
     for(var i = 0; i < choices.length; i++) {
-      if(Math.abs(choices[i].pct - answerPcts[i]) >= 0.08) {
-        res = false;
+      if(Math.abs(choices[i].pct - answerPcts[i]) >= mistake) {
+        return false;
       }
     }
-    return res;
+    return true;
   }
 
   function handleResult() {
@@ -155,14 +157,9 @@ function Play(props) {
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
       </style>
       <div className={styles.box}>
-        <CurrentState current={generateMix()} />
+        <CurrentState current={generateMix()} targetColor={targetColor} />
         <div className={styles.box2}>
-          <Timer 
-            level={level}
-            targetColor={targetColor}
-            setTime={setTime} 
-            result={result} 
-          />
+          <Timer setTime={setTime} result={result} />
           <ColorList choices={choices} setChoices={setChoices} sEffect={sEffect}/>
           <div className={styles.containerRow}>
             <div className={styles.buttonBG1}>

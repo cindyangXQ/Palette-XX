@@ -120,9 +120,9 @@ function AppShell(props) {
                   </p>
                   <p style={{fontSize: 13}}>
                     <p>1. You are given the freedom of choosing a random colour. </p>
-                    <p>2. In Easy level, the target colour is shown and choices are simple.</p>
+                    <p>2. In Easy level, required accuracy is within 20%, and choices are simple.</p>
                     <p>3. In Medium level, choices are randomly generated.</p>
-                    <p>4. In Difficult level, the target colour is hidden.</p>
+                    <p>4. In Difficult level, required accuracy is within 10%.</p>
                     <p>5. You earn 1/2/3 point each time you win a Easy/Medium/Difficult level. </p>
                     <p>6. Tool gives you the answers in sequence and only once. </p>
                   </p>
@@ -133,9 +133,9 @@ function AppShell(props) {
                     <u>Difficulty</u>
                   </p>
                   <p style={{fontSize: 13}}>
-                    <p>1. In Easy level, the target colour is shown and your choices are red, green, and blue.</p>
-                    <p>2. In Medium level, the target colour is shown and your choices are randomly generated.</p>
-                    <p>3. In Difficult level, the target colour is hidden and your choices are randomly generated.</p>
+                    <p>1. In Easy level, required accuracy is within 20%, and your choices are red, green, and blue.</p>
+                    <p>2. In Medium level, required accuracy is within 20%, and your choices are randomly generated.</p>
+                    <p>3. In Difficult level, required accuracy is within 10%, and your choices are randomly generated.</p>
                   </p>
                 </> : <></>}
 

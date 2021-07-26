@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  background-color: #31353da3;
+  box-shadow: 0px 5px 20px #00000090;
+}
+
+.title {
+  margin-top: 30%;
+  color: #cccccc;
+  text-align: center;
+  font-size: 33px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.state {
+  height: 37%;
+  width: 60%;
+  margin: 10% auto;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.info {
+  margin: 0px;
+  color: azure;
+  font-size: 25px;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+}
